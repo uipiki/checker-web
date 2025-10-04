@@ -1,44 +1,53 @@
--- サンプルデータの投入
+-- リアルデータの投入
 
 -- ツアーの作成
 INSERT INTO tours (name) VALUES
   ('JOPT'),
-  ('戦国ポーカーツアー'),
-  ('WPT Japan')
+  ('Spadie'),
+  ('戦国'),
+  ('SHIBUYA POKER FES'),
+  ('P1GP'),
+  ('TOKYOSUPERTOURNAMENT')
 ON CONFLICT (name) DO NOTHING;
 
--- イベントの作成（開催中の大会を含む）
--- 今日を基準に±数日で設定
+-- イベントの作成
 INSERT INTO events (tour_id, name, location, start_date, end_date) VALUES
-  -- 開催中の大会（今日を含む期間）
-  (1, 'JOPT Tokyo #3', 'Tokyo', CURRENT_DATE - INTERVAL '3 days', CURRENT_DATE + INTERVAL '7 days'),
-  (2, '戦国ポーカー 第5戦', 'Nagoya', CURRENT_DATE - INTERVAL '2 days', CURRENT_DATE + INTERVAL '5 days'),
-  (3, 'WPT Japan 2024', 'Tokyo', CURRENT_DATE - INTERVAL '1 day', CURRENT_DATE + INTERVAL '4 days'),
-  
-  -- 終了した大会（表示されない）
-  (1, 'JOPT Osaka #2', 'Osaka', CURRENT_DATE - INTERVAL '20 days', CURRENT_DATE - INTERVAL '15 days'),
-  
-  -- 未来の大会（表示されない）
-  (1, 'JOPT Fukuoka #1', 'Fukuoka', CURRENT_DATE + INTERVAL '30 days', CURRENT_DATE + INTERVAL '40 days');
+  (6, 'TOKYOSUPERTOURNAMENT', 'tokyo', '2025-10-02', '2025-10-05'),
+  (1, 'JOPT 2025 Tokyo #03', 'tokyo', '2025-10-09', '2025-10-13'),
+  (1, 'JOPT 2025 Osaka #02', 'osaka', '2025-10-30', '2025-11-03');
 
 -- トーナメントの作成
-INSERT INTO tournaments (event_id, name, game_type, buy_in, prize_pool, fix_prize, start_time) VALUES
-  -- JOPT Tokyo #3（開催中）
-  (1, 'Main Event', 'NLH', 30000, 27000, NULL, CURRENT_TIMESTAMP + INTERVAL '1 day'),
-  (1, 'MegaStack', 'NLH', 15000, 13500, NULL, CURRENT_TIMESTAMP - INTERVAL '1 day'),
-  (1, 'PLO Event', 'PLO', 20000, 18000, NULL, CURRENT_TIMESTAMP + INTERVAL '12 hours'),
-  
-  -- 戦国ポーカー 第5戦（開催中）
-  (2, 'メインイベント', 'NLH', 50000, 45000, NULL, CURRENT_TIMESTAMP + INTERVAL '2 days'),
-  (2, 'サイドイベント', 'NLH', 15000, 13500, NULL, CURRENT_TIMESTAMP - INTERVAL '12 hours'),
-  
-  -- WPT Japan 2024（開催中）
-  (3, 'WPT Main Event', 'NLH', 100000, 90000, NULL, CURRENT_TIMESTAMP + INTERVAL '1 day'),
-  (3, 'High Roller', 'NLH', 200000, 180000, NULL, CURRENT_TIMESTAMP + INTERVAL '2 days'),
-  (3, 'Turbo Championship', 'NLH', 50000, 45000, NULL, CURRENT_TIMESTAMP + INTERVAL '6 hours'),
-  
-  -- JOPT Osaka #2（終了）
-  (4, 'Main Event', 'NLH', 25000, 22500, NULL, CURRENT_TIMESTAMP - INTERVAL '17 days'),
-  
-  -- JOPT Fukuoka #1（未来）
-  (5, 'Main Event', 'NLH', 35000, 31500, NULL, CURRENT_TIMESTAMP + INTERVAL '35 days');
+INSERT INTO tournaments (event_id, name, game_type, buy_in, prize_pool, start_date, end_date) VALUES
+  (1, '#1 Tokyo Super Tournament Main', 'NLH', 35000, 15000000, '2025-10-02', '2025-10-05'),
+  (1, '#3 美容業界No.1 ポーカープレイヤー決定戦', 'NLH', 20000, 2000000, '2025-10-02', '2025-10-02'),
+  (1, '#4 Kick off', 'NLH', 15000, 450000, '2025-10-02', '2025-10-02'),
+  (1, '#5 High Roller 1000 (50CAP)', 'NLH', 100000, 3750000, '2025-10-02', '2025-10-02'),
+  (1, '#6 PLO Prime', 'PLO', 20000, 500000, '2025-10-02', '2025-10-02'),
+  (1, '#7 Super Cup Special Tournament', 'NLH', 20000, 720000, '2025-10-02', '2025-10-02'),
+  (1, '#8 PLO Night', 'PLO', 15000, 270000, '2025-10-02', '2025-10-02'),
+  (1, '#9 NLH Turbo', 'NLH', 10000, 240000, '2025-10-02', '2025-10-02'),
+  (1, '#10 NLH Hyper Turbo', 'NLH', 7000, 125000, '2025-10-02', '2025-10-02'),
+  (1, '#11 Morning Tournament', 'NLH', 8000, 200000, '2025-10-03', '2025-10-03'),
+  (1, '#12 P1circuit × TST Special Tournament', 'NLH', 18000, 460000, '2025-10-03', '2025-10-03'),
+  (1, '#13 Super League Invitation Match', 'NLH', 50000, 2500000, '2025-10-03', '2025-10-03'),
+  (1, '#14 TST第1回 経営者No.1 決定戦 by ohpner', 'NLH', 99000, 4000000, '2025-10-03', '2025-10-03'),
+  (1, '#15 OASYS Championship', 'NLH', 30000, 3000000, '2025-10-03', '2025-10-03'),
+  (1, '#16 High Roller 2000 (40CAP)', 'NLH', 200000, 6200000, '2025-10-03', '2025-10-03'),
+  (1, '#17 Night Stack', 'NLH', 15000, 540000, '2025-10-03', '2025-10-03'),
+  (1, '#18 PLO Night', 'PLO', 15000, 270000, '2025-10-03', '2025-10-03'),
+  (1, '#19 NLH Turbo', 'NLH', 10000, 240000, '2025-10-03', '2025-10-03'),
+  (1, '#20 NLH Hyper Turbo', 'NLH', 7000, 125000, '2025-10-03', '2025-10-03'),
+  (1, '#2 Mini Main Championship', 'NLH', 25000, 3000000, '2025-10-04', '2025-10-05'),
+  (1, '#21 モンスタートレカバウンティ', 'NLH', 22000, 730000, '2025-10-04', '2025-10-04'),
+  (1, '#22 Super High Roller 3000 (30CAP)', 'NLH', 300000, 6900000, '2025-10-04', '2025-10-04'),
+  (1, '#23 Tag Match Supported by クライナー', 'NLH', 30000, 1400000, '2025-10-04', '2025-10-04'),
+  (1, '#24 Tag Match Turbo', 'NLH', 12000, 350000, '2025-10-04', '2025-10-04'),
+  (1, '#25 Triple Draw MIX', 'Mix', 15000, 270000, '2025-10-04', '2025-10-04'),
+  (1, '#26 NLH Hyper Turbo', 'NLH', 7000, 125000, '2025-10-04', '2025-10-04'),
+  (1, '#27 第1期TSL Player＆Team Championship', 'NLH', 18000, 1000000, '2025-10-05', '2025-10-05'),
+  (1, '#28 Red Dragon Challenge', 'NLH', 30000, 1940000, '2025-10-05', '2025-10-05'),
+  (1, '#29 PLO Championship', 'PLO', 30000, 600000, '2025-10-05', '2025-10-05'),
+  (1, '#31 Tokyo Princess Cup', 'NLH', 10000, 300000, '2025-10-05', '2025-10-05'),
+  (1, '#30 High Roller Turbo 770', 'NLH', 77000, 2650000, '2025-10-05', '2025-10-05'),
+  (1, '#32 NLH Closer', 'NLH', 12000, 450000, '2025-10-05', '2025-10-05'),
+  (1, '#33 Last AoF', 'AoF', 3000, 80000, '2025-10-05', '2025-10-05');

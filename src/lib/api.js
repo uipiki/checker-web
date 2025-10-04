@@ -25,14 +25,19 @@ export const getActiveEvents = async () => {
 }
 
 /**
- * 特定のイベントに紐づくトーナメント一覧を取得
+ * 特定のイベントに紐づく開催中のトーナメント一覧を取得
+ * start_date <= 今日 <= end_date
  */
 export const getTournamentsByEvent = async (eventId) => {
+  const today = new Date().toISOString().split('T')[0] // YYYY-MM-DD形式
+  
   const { data, error } = await supabase
     .from('tournaments')
     .select('*')
     .eq('event_id', eventId)
-    .order('start_time')
+    .lte('start_date', today) // 開始日が今日以前
+    .gte('end_date', today)   // 終了日が今日以降
+    .order('start_date', { ascending: true })
   
   if (error) throw error
   return data
