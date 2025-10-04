@@ -12,6 +12,7 @@ function App() {
   const [selectedTournament, setSelectedTournament] = useState('');
   const [tournament, setTournament] = useState(null);
   const [entries, setEntries] = useState('');
+  const [showResult, setShowResult] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -42,6 +43,7 @@ function App() {
           setTournaments(tournamentList);
           setSelectedTournament('');
           setTournament(null);
+          setShowResult(false);
         } catch (err) {
           setError('トーナメント情報の取得に失敗しました');
           console.error(err);
@@ -52,6 +54,7 @@ function App() {
         setTournaments([]);
         setSelectedTournament('');
         setTournament(null);
+        setShowResult(false);
       }
     };
     fetchTournaments();
@@ -65,6 +68,7 @@ function App() {
           setLoading(true);
           const tournamentDetail = await getTournamentById(selectedTournament);
           setTournament(tournamentDetail);
+          setShowResult(false);
         } catch (err) {
           setError('トーナメント詳細の取得に失敗しました');
           console.error(err);
@@ -73,24 +77,29 @@ function App() {
         }
       } else {
         setTournament(null);
+        setShowResult(false);
       }
     };
     fetchTournament();
   }, [selectedTournament]);
 
-  // エントリ数が入力されたときにログを記録
-  useEffect(() => {
-    const saveLog = async () => {
-      if (selectedTournament && entries > 0) {
-        try {
-          await logEntryCount(selectedTournament, entries);
-        } catch (err) {
-          console.error('ログの保存に失敗しました', err);
-        }
-      }
-    };
-    saveLog();
-  }, [selectedTournament, entries]);
+  // 還元率をチェックボタンのハンドラ
+  const handleCheckReturnRate = async () => {
+    if (!selectedTournament || !entries || entries <= 0) {
+      return;
+    }
+
+    try {
+      // エントリログを記録
+      await logEntryCount(selectedTournament, entries);
+      // 結果を表示
+      setShowResult(true);
+    } catch (err) {
+      console.error('ログの保存に失敗しました', err);
+      // エラーが出ても結果は表示する
+      setShowResult(true);
+    }
+  };
 
   return (
     <div className="app">
@@ -118,13 +127,23 @@ function App() {
           />
 
           {tournament && (
-            <EntryInput
-              entries={entries}
-              onEntriesChange={setEntries}
-            />
+            <>
+              <EntryInput
+                entries={entries}
+                onEntriesChange={setEntries}
+              />
+              
+              <button 
+                className="check-button"
+                onClick={handleCheckReturnRate}
+                disabled={!entries || entries <= 0}
+              >
+                還元率をチェック
+              </button>
+            </>
           )}
 
-          {tournament && entries > 0 && (
+          {tournament && showResult && entries > 0 && (
             <PayoutDisplay
               tournament={tournament}
               entries={entries}
