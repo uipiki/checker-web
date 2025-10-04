@@ -7,14 +7,15 @@
 - 大会選択
 - トーナメント選択
 - エントリ数入力
-- 還元率計算・表示
-- 賞金配分の詳細表示
+- 還元率の計算・表示
+- レスポンシブデザイン（PC・スマホ対応）
 
-## 開発環境
+## 技術スタック
 
 - React 19
 - Vite 6
-- CSS Modules
+- CSS
+- Vercel（ホスティング）
 
 ## セットアップ
 
@@ -40,38 +41,53 @@ npm run build
 
 ## デプロイ
 
-### Netlify
+このプロジェクトはVercelにデプロイされています。
 
-1. Netlifyアカウントにログイン
-2. "Add new site" > "Import an existing project"
-3. GitHubリポジトリを接続
-4. Build settings:
-   - Build command: `npm run build`
-   - Publish directory: `dist`
+GitHubにpushすると、Vercelが自動的にビルド・デプロイします。
 
-### Vercel
+### 手動デプロイ（Vercel CLI）
 
-1. Vercelアカウントにログイン
-2. "Add New" > "Project"
-3. GitHubリポジトリを接続
-4. 自動的に設定を検出してデプロイ
+```bash
+npm i -g vercel
+vercel
+```
 
-### GitHub Pages
+## プロジェクト構成
 
-1. `vite.config.js` の `base` を設定:
-   ```js
-   base: '/リポジトリ名/'
-   ```
-2. ビルドしてデプロイ:
-   ```bash
-   npm run build
-   # distフォルダをgh-pagesブランチにプッシュ
-   ```
+```
+checker-web/
+├── src/
+│   ├── components/      # UIコンポーネント
+│   │   ├── TournamentSelector.jsx
+│   │   ├── EntryInput.jsx
+│   │   └── PayoutDisplay.jsx
+│   ├── data/
+│   │   └── mockData.js  # モックデータ（将来的にAPI接続予定）
+│   ├── App.jsx
+│   ├── main.jsx
+│   └── index.css
+├── index.html
+├── vite.config.js
+└── package.json
+```
 
 ## 今後の拡張予定
 
-- バックエンドAPI連携
-- データベース接続
-- トーナメント情報の動的管理
-- ユーザー認証
-- 履歴機能
+- **バックエンドAPI実装**
+  - Vercel Serverless Functionsを使用
+  - `/api`ディレクトリにAPIエンドポイントを追加予定
+- **データベース接続**
+  - トーナメント情報の永続化
+  - 動的なデータ管理
+- **機能追加**
+  - トーナメント情報の追加・編集機能
+  - 履歴機能
+  - データのエクスポート
+
+## 注意事項
+
+還元率はプレーヤーズガイドを参考に計算されているため、プライズアップは考慮していません。
+
+## ライセンス
+
+ISC
