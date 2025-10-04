@@ -42,6 +42,16 @@
   box-sizing: border-box;
 }
 
+.error-message {
+  padding: 1rem;
+  background: #fee;
+  border-left: 4px solid #f44;
+  border-radius: 4px;
+  color: #c00;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+}
+
 .app-footer {
   background: #333;
   color: white;

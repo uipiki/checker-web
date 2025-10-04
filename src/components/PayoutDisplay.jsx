@@ -1,4 +1,5 @@
 import React from 'react';
+import { calculateReturnRate } from '../lib/api';
 import './PayoutDisplay.css';
 
 const PayoutDisplay = ({ tournament, entries }) => {
@@ -6,12 +7,7 @@ const PayoutDisplay = ({ tournament, entries }) => {
     return null;
   }
 
-  const totalPayoutPercentage = tournament.payoutStructure.reduce(
-    (sum, payout) => sum + payout.percentage, 
-    0
-  );
-  
-  const returnRate = (totalPayoutPercentage).toFixed(2);
+  const returnRate = calculateReturnRate(tournament, entries);
 
   return (
     <div className="payout-display">
