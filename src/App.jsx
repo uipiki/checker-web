@@ -2,12 +2,10 @@ import React, { useState, useEffect } from 'react';
 import TournamentSelector from './components/TournamentSelector';
 import EntryInput from './components/EntryInput';
 import PayoutDisplay from './components/PayoutDisplay';
-import { getTours, getEventsByTour, getTournamentsByEvent, getTournamentById, logEntryCount } from './lib/api';
+import { getActiveEvents, getTournamentsByEvent, getTournamentById, logEntryCount } from './lib/api';
 import './App.css';
 
 function App() {
-  const [tours, setTours] = useState([]);
-  const [selectedTour, setSelectedTour] = useState('');
   const [events, setEvents] = useState([]);
   const [selectedEvent, setSelectedEvent] = useState('');
   const [tournaments, setTournaments] = useState([]);
@@ -18,50 +16,21 @@ function App() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // ツアー一覧を取得
-    const fetchTours = async () => {
+    // 開催中の大会一覧を取得
+    const fetchEvents = async () => {
       try {
         setLoading(true);
-        const tourList = await getTours();
-        setTours(tourList);
+        const eventList = await getActiveEvents();
+        setEvents(eventList);
       } catch (err) {
-        setError('ツアー情報の取得に失敗しました');
+        setError('大会情報の取得に失敗しました');
         console.error(err);
       } finally {
         setLoading(false);
       }
     };
-    fetchTours();
-  }, []);
-
-  useEffect(() => {
-    // 選択されたツアーのイベント一覧を取得
-    const fetchEvents = async () => {
-      if (selectedTour) {
-        try {
-          setLoading(true);
-          const eventList = await getEventsByTour(selectedTour);
-          setEvents(eventList);
-          setSelectedEvent('');
-          setTournaments([]);
-          setSelectedTournament('');
-          setTournament(null);
-        } catch (err) {
-          setError('イベント情報の取得に失敗しました');
-          console.error(err);
-        } finally {
-          setLoading(false);
-        }
-      } else {
-        setEvents([]);
-        setSelectedEvent('');
-        setTournaments([]);
-        setSelectedTournament('');
-        setTournament(null);
-      }
-    };
     fetchEvents();
-  }, [selectedTour]);
+  }, []);
 
   useEffect(() => {
     // 選択されたイベントのトーナメント一覧を取得
@@ -139,9 +108,6 @@ function App() {
           )}
           
           <TournamentSelector
-            tours={tours}
-            selectedTour={selectedTour}
-            onTourChange={setSelectedTour}
             events={events}
             selectedEvent={selectedEvent}
             onEventChange={setSelectedEvent}

@@ -1,27 +1,24 @@
 import { supabase } from './supabase'
 
 /**
- * ツアー一覧を取得
+ * 開催中の大会（イベント）一覧を取得
+ * start_date <= 今日 <= end_date
  */
-export const getTours = async () => {
-  const { data, error } = await supabase
-    .from('tours')
-    .select('*')
-    .order('name')
+export const getActiveEvents = async () => {
+  const today = new Date().toISOString().split('T')[0] // YYYY-MM-DD形式
   
-  if (error) throw error
-  return data
-}
-
-/**
- * 特定のツアーに紐づくイベント一覧を取得
- */
-export const getEventsByTour = async (tourId) => {
   const { data, error } = await supabase
     .from('events')
-    .select('*')
-    .eq('tour_id', tourId)
-    .order('start_date', { ascending: false })
+    .select(`
+      *,
+      tours (
+        id,
+        name
+      )
+    `)
+    .lte('start_date', today) // 開始日が今日以前
+    .gte('end_date', today)   // 終了日が今日以降
+    .order('start_date', { ascending: true })
   
   if (error) throw error
   return data
