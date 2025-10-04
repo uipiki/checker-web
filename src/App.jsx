@@ -95,7 +95,7 @@ function App() {
   return (
     <div className="app">
       <header className="app-header">
-        <h1>🎲 ポーカートーナメント還元率チェッカー</h1>
+        <h1>🎲 プライズチェッカーNow</h1>
         <p>日本のポーカートーナメントの還元率を簡単にチェック</p>
       </header>
 
@@ -134,7 +134,7 @@ function App() {
       </main>
 
       <footer className="app-footer">
-        <p>&copy; 2024 ポーカートーナメント還元率チェッカー</p>
+        <p>&copy; 2024 プライズチェッカーNow</p>
       </footer>
     </div>
   );

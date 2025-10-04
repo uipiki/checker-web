@@ -10,7 +10,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "ポーカートーナメント還元率チェッカー",
+  "description": "プライズチェッカーNow - 日本のポーカートーナメント還元率チェッカー",
   "dependencies": {
     "@supabase/supabase-js": "^2.58.0",
     "@vitejs/plugin-react": "^4.7.0",
