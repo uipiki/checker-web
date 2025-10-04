@@ -95,7 +95,7 @@ function App() {
   return (
     <div className="app">
       <header className="app-header">
-        <h1>🎲 プライズチェッカーNow</h1>
+        <h1>♠️ プライズチェッカーNow</h1>
         <p>日本のポーカートーナメントの還元率を簡単にチェック</p>
       </header>
 
