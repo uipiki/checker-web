@@ -24,9 +24,7 @@ const TournamentSelector = ({
           <option value="">-- 大会を選択してください --</option>
           {events.map(event => (
             <option key={event.id} value={event.id}>
-              {event.tours?.name && `[${event.tours.name}] `}
               {event.name}
-              {event.location && ` (${event.location})`}
             </option>
           ))}
         </select>
@@ -46,8 +44,6 @@ const TournamentSelector = ({
             {tournaments.map(tournament => (
               <option key={tournament.id} value={tournament.id}>
                 {tournament.name}
-                {tournament.game_type && ` [${tournament.game_type}]`}
-                {tournament.buy_in && ` (バイイン: ¥${tournament.buy_in.toLocaleString()})`}
               </option>
             ))}
           </select>
