@@ -110,7 +110,17 @@ const PrivacyPolicy = () => {
           <h2>9. お問い合わせ</h2>
           <p>
             本プライバシーポリシーに関するお問い合わせは、
-            GitHubリポジトリの Issues からお願いいたします。
+            以下のフォームからお願いいたします。
+          </p>
+          <p>
+            <a 
+              href="https://docs.google.com/forms/d/e/1FAIpQLScgwUW_Mht79FXYvuLwh-wmN0qIEVJ54BTmydOHfM4L1GHDXw/viewform" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="contact-link"
+            >
+              お問い合わせフォーム
+            </a>
           </p>
         </section>
 
