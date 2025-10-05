@@ -6,7 +6,7 @@ const PrivacyPolicy = () => {
     <div className="policy-page">
       <div className="policy-container">
         <h1>プライバシーポリシー</h1>
-        <p className="last-updated">最終更新日: 2024年10月5日</p>
+        <p className="last-updated">最終更新日: 2025年1月4日</p>
 
         <section>
           <h2>1. はじめに</h2>
