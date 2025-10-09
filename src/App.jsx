@@ -23,7 +23,7 @@ function App() {
         </main>
 
         <footer className="app-footer">
-          <p>&copy; 2024 プライズチェッカーNow</p>
+          <p>&copy; 2025 プライズチェッカーNow</p>
           <div className="footer-links">
             <Link to="/privacy-policy">プライバシーポリシー</Link>
           </div>
