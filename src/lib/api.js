@@ -1,11 +1,21 @@
 import { supabase } from './supabase'
 
 /**
+ * 日本時間の今日の日付を取得（YYYY-MM-DD形式）
+ */
+const getJSTToday = () => {
+  const now = new Date()
+  // 日本時間に変換（UTC+9）
+  const jstDate = new Date(now.getTime() + (9 * 60 * 60 * 1000))
+  return jstDate.toISOString().split('T')[0]
+}
+
+/**
  * 開催中の大会（イベント）一覧を取得
  * start_date <= 今日 <= end_date
  */
 export const getActiveEvents = async () => {
-  const today = new Date().toISOString().split('T')[0] // YYYY-MM-DD形式
+  const today = getJSTToday()
   
   const { data, error } = await supabase
     .from('events')
@@ -29,7 +39,7 @@ export const getActiveEvents = async () => {
  * start_date <= 今日 <= end_date
  */
 export const getTournamentsByEvent = async (eventId) => {
-  const today = new Date().toISOString().split('T')[0] // YYYY-MM-DD形式
+  const today = getJSTToday()
   
   const { data, error } = await supabase
     .from('tournaments')
