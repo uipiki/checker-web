@@ -26,6 +26,10 @@ const PayoutDisplay = ({ tournament, entries }) => {
         <div className="note">
           <p>還元率はプレーヤーズガイドを参考に計算されているためプライズアップを考慮していません。</p>
         </div>
+        <div className="note">
+          <p className="note-title">Bountyについて</p>
+          <p>参加人数によって変動するBountyは考慮されていません。Mystery Bountyのように事前に定められているBountyは考慮されています。</p>
+        </div>
       </div>
     </div>
   );

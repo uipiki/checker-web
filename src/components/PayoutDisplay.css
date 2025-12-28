@@ -69,6 +69,11 @@
   margin: 0;
 }
 
+.note p.note-title {
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
 @media (max-width: 768px) {
   .payout-display {
     padding: 1.5rem;
