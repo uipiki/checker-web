@@ -193,13 +193,15 @@ th.count { text-align: right; }
   background: #2c2c2c; color: #fff; border-color: #2c2c2c;
 }
 .bmc-btn {
-  display: inline-flex; align-items: center; gap: 4px;
+  display: inline-flex; align-items: center; gap: 2px;
   background: #fff; color: #2c2c2c;
   border: 1px solid #d0c8b8; border-radius: 6px;
-  padding: 6px 12px; font-size: 0.8em;
-  text-decoration: none; white-space: nowrap;
+  padding: 4px 8px; font-size: 0.7em; line-height: 1.2;
+  text-decoration: none;
   font-family: inherit; transition: background 0.15s;
 }
+.bmc-btn .bmc-emoji { font-size: 1.2em; }
+.bmc-btn .bmc-text { display: inline-block; text-align: left; }
 .bmc-btn:hover { background: #f0ebe0; }
 .no-results {
   text-align: center; padding: 40px 16px; color: #8a8070; font-size: 0.9em;
@@ -241,7 +243,7 @@ th.count { text-align: right; }
       <option value="/ujpi/tours/spadie_40th/ranking_public.html">SPADIE #40</option>
     </select>
   <input type="text" class="search-box" id="search" placeholder="Search by player name" oninput="filterByName()">
-  <a href="https://buymeacoffee.com/prizechecker" target="_blank" rel="noopener" class="bmc-btn">🤝開発者を支援する</a>
+  <a href="https://buymeacoffee.com/prizechecker" target="_blank" rel="noopener" class="bmc-btn"><span class="bmc-emoji">🤝</span><span class="bmc-text">開発者を<br>支援する</span></a>
 </div>
 </div>
 <table>
