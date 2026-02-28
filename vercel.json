@@ -1,6 +1,10 @@
 {
   "rewrites": [
     {
+      "source": "/ujpi/:path*",
+      "destination": "/ujpi/:path*"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
