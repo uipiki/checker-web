@@ -35,13 +35,17 @@ header h1 {
   font-size: 1.5em;
   white-space: nowrap;
 }
-.header-search {
-  flex: 1;
-  min-width: 0;
-}
 .controls {
   max-width: 960px;
   margin: 0 auto 4px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.controls .tour-select,
+.controls .search-box {
+  flex: 1;
+  min-width: 0;
 }
 .search-box {
   width: 100%;
@@ -61,7 +65,6 @@ header h1 {
   color: #b0a898;
 }
 .tour-select {
-  width: 100%;
   padding: 10px 14px;
   border: 1px solid #d0c8b8;
   border-radius: 6px;
@@ -189,6 +192,15 @@ th.count { text-align: right; }
 .pagination button.active {
   background: #2c2c2c; color: #fff; border-color: #2c2c2c;
 }
+.bmc-btn {
+  display: inline-flex; align-items: center; gap: 4px;
+  background: #fff; color: #2c2c2c;
+  border: 1px solid #d0c8b8; border-radius: 6px;
+  padding: 6px 12px; font-size: 0.8em;
+  text-decoration: none; white-space: nowrap;
+  font-family: inherit; transition: background 0.15s;
+}
+.bmc-btn:hover { background: #f0ebe0; }
 .no-results {
   text-align: center; padding: 40px 16px; color: #8a8070; font-size: 0.9em;
   display: none;
@@ -197,7 +209,7 @@ th.count { text-align: right; }
   body { padding: 8px; }
   header { padding: 16px 4px 12px; flex-wrap: wrap; gap: 8px; }
   header h1 { font-size: 1.1em; white-space: normal; }
-  .header-search { flex-basis: 100%; }
+  .bmc-btn { font-size: 0.7em; padding: 6px 8px; }
   .controls { margin: 0 4px 12px; }
   .search-box { padding: 10px 12px; font-size: 16px; }
   th { padding: 8px 8px; font-size: 0.7em; }
@@ -221,9 +233,6 @@ th.count { text-align: right; }
 <div class="sticky-top" id="stickyTop">
 <header>
   <h1>(Unofficial) JOPT Poker Index</h1>
-  <div class="header-search">
-    <input type="text" class="search-box" id="search" placeholder="Search by poker player name..." oninput="filterByName()">
-  </div>
 </header>
 <div class="controls">
   <select id="tourSelect" class="tour-select" onchange="location.href=this.value">
@@ -231,6 +240,8 @@ th.count { text-align: right; }
       <option value="/ujpi/tours/jopt_2026_tokyo_01/ranking_public.html" selected>JOPT Tokyo #1</option>
       <option value="/ujpi/tours/spadie_40th/ranking_public.html">SPADIE #40</option>
     </select>
+  <input type="text" class="search-box" id="search" placeholder="Search by player name" oninput="filterByName()">
+  <a href="https://buymeacoffee.com/prizechecker" target="_blank" rel="noopener" class="bmc-btn">🤝開発者を支援する</a>
 </div>
 </div>
 <table>

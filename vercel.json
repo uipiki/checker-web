@@ -1,8 +1,8 @@
 {
   "rewrites": [
     {
-      "source": "/ujpi/:path*",
-      "destination": "/ujpi/:path*"
+      "source": "/ujpi/(.*)",
+      "destination": "/ujpi/$1"
     },
     {
       "source": "/(.*)",
