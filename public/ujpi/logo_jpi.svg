@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 50" width="120" height="50">
+  <defs>
+    <linearGradient id="goldV" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   stop-color="#fff0a0"/>
+      <stop offset="30%"  stop-color="#ffd700"/>
+      <stop offset="65%"  stop-color="#b8860b"/>
+      <stop offset="100%" stop-color="#e8c040"/>
+    </linearGradient>
+    <linearGradient id="goldEdge" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#8a6500"/>
+      <stop offset="40%"  stop-color="#ffd700"/>
+      <stop offset="100%" stop-color="#8a6500"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="1.2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- parallelogram background -->
+  <polygon points="10,1 119,1 110,49 1,49" fill="#0c1622"/>
+
+  <!-- top & bottom gold border lines -->
+  <line x1="10" y1="1.5"  x2="119" y2="1.5"  stroke="url(#goldEdge)" stroke-width="1.8"/>
+  <line x1="1"  y1="48.5" x2="110" y2="48.5" stroke="url(#goldEdge)" stroke-width="1.8"/>
+
+  <!-- left & right diagonal edges -->
+  <line x1="10" y1="1"  x2="1"   y2="49" stroke="#c8941a" stroke-width="1.2" opacity="0.7"/>
+  <line x1="119" y1="1" x2="110" y2="49" stroke="#c8941a" stroke-width="1.2" opacity="0.7"/>
+
+  <!-- inner accent lines -->
+  <line x1="14" y1="4"  x2="116" y2="4"  stroke="#ffd700" stroke-width="0.5" opacity="0.25"/>
+  <line x1="5"  y1="46" x2="107" y2="46" stroke="#ffd700" stroke-width="0.5" opacity="0.25"/>
+
+  <!-- JPI text -->
+  <text
+    x="60" y="38"
+    font-family="'Arial Black', 'Franklin Gothic Heavy', Impact, sans-serif"
+    font-size="31"
+    font-weight="900"
+    font-style="italic"
+    text-anchor="middle"
+    fill="url(#goldV)"
+    filter="url(#glow)"
+    letter-spacing="3">JPI</text>
+</svg>
