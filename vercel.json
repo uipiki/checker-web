@@ -1,9 +1,8 @@
 {
+  "framework": "vite",
+  "buildCommand": "vite build",
+  "outputDirectory": "dist",
   "rewrites": [
-    {
-      "source": "/ujpi/(.*)",
-      "destination": "/ujpi/$1"
-    },
     {
       "source": "/(.*)",
       "destination": "/index.html"
