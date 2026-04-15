@@ -156,10 +156,21 @@ th.count { text-align: right; }
   border-bottom: 1px solid #1e2f44;
 }
 .rank {
-  width: 56px;
+  width: 72px;
   font-weight: 600;
   color: #7f9aad;
+  white-space: nowrap;
 }
+.rank .medal {
+  display: inline-block;
+  margin-right: 4px;
+  font-size: 1.15em;
+  vertical-align: -2px;
+}
+.rank-1 { color: #f5c542; font-weight: 700; }
+.rank-2 { color: #c8ccd4; font-weight: 700; }
+.rank-3 { color: #d98a4a; font-weight: 700; }
+.rank-top10 { color: #b08030; font-weight: 600; }
 .name {
   font-weight: 600;
   color: #e8edf2;
@@ -254,7 +265,7 @@ th.count { text-align: right; }
 }
 .x-link {
   display: inline-flex; align-items: center; justify-content: center;
-  vertical-align: text-bottom; margin-left: 6px;
+  vertical-align: text-bottom; margin-left: 12px;
   width: 20px; height: 20px; border-radius: 50%;
   background: #2a3a4a; transition: background 0.15s;
   text-decoration: none;
@@ -292,7 +303,7 @@ th.count { text-align: right; }
   .search-box { padding: 10px 12px; font-size: 16px; }
   th { padding: 8px 8px; font-size: 0.7em; }
   th.score { text-align: right; position: relative; }
-  .rank { width: 40px; }
+  .rank { width: 56px; }
   .player-row td { padding: 8px 8px; }
   .name { font-size: 0.85em; }
   .score { font-size: 0.85em; }
@@ -353,6 +364,10 @@ html[data-theme="light"] .player-link:hover { color: #1a6abf; }
 html[data-theme="light"] .score { color: #9a6800; }
 html[data-theme="light"] .count,
 html[data-theme="light"] .rank { color: #5a6a7a; }
+html[data-theme="light"] .rank-1 { color: #c89a10; }
+html[data-theme="light"] .rank-2 { color: #7a8899; }
+html[data-theme="light"] .rank-3 { color: #b5651d; }
+html[data-theme="light"] .rank-top10 { color: #9a6800; }
 html[data-theme="light"] .detail-row td { background: #dde3ec; border-bottom-color: #d0d8e4; }
 html[data-theme="light"] .ev-card { background: #e8ecf2; border-color: #c8d0dc; }
 html[data-theme="light"] .ev-row { border-bottom-color: #d0d8e4; }
@@ -412,7 +427,7 @@ gtag("config", "G-ZX9DZ00N62");
   <th class="score">Score<span class="score-help">&#9432;</span><span class="score-tip">GPI準拠方式。log(参加者数/順位) × (1 + log10(バイイン/基準額))で算出。フィールドサイズが大きいほどスコアが高くなる。フィールド上限2700人。</span></th>
   <th class="count">Events</th>
 </tr></thead>
-<tbody><tr class="player-row" data-rank="1" onclick="toggle('r1')"><td class="rank">1st</td><td class="name">みき</td><td class="score">46.9355</td><td class="count">4</td></tr>
+<tbody><tr class="player-row" data-rank="1" onclick="toggle('r1')"><td class="rank rank-1"><span class="medal">🥇</span>1st</td><td class="name">みき</td><td class="score">46.9355</td><td class="count">4</td></tr>
 <tr class="detail-row" data-rank="1" id="r1"><td colspan="4"><div class="ev-container"><div class="ev-card"><div class="ev-info"><div class="ev-name">#01 NLH Main Event</div><div class="ev-rank">1位 / 2500人 (22.7139pt)</div></div></div>
 <div class="ev-card"><div class="ev-info"><div class="ev-name">#04 NLH Champions Bounty</div><div class="ev-rank">1位 / 169人 (11.8041pt)</div></div></div>
 <div class="ev-card"><div class="ev-info"><div class="ev-name">#22 NLH Final Turbo Ⅱ</div><div class="ev-rank">2位 / 122人 (7.3098pt)</div></div></div>
@@ -426,7 +441,7 @@ gtag("config", "G-ZX9DZ00N62");
 https://prize-checker.com/ujpi
 
 #ポーカー戦績ランキング 　#プライズチェッカー" data-flickr="https://www.flickr.com/photos/201752439@N08/55095506872/in/album-72177720331804092/" onclick="shareToX(this,event)"><svg class="x-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> ポストする</a></div></td></tr>
-<tr class="player-row" data-rank="2" onclick="toggle('r2')"><td class="rank">2nd</td><td class="name">K</td><td class="score">45.8481</td><td class="count">4</td></tr>
+<tr class="player-row" data-rank="2" onclick="toggle('r2')"><td class="rank rank-2"><span class="medal">🥈</span>2nd</td><td class="name">K</td><td class="score">45.8481</td><td class="count">4</td></tr>
 <tr class="detail-row" data-rank="2" id="r2"><td colspan="4"><div class="ev-container"><div class="ev-card"><div class="ev-info"><div class="ev-name">#03 NLH Elite 500</div><div class="ev-rank">2位 / 196人 (12.3747pt)</div></div></div>
 <div class="ev-card"><div class="ev-info"><div class="ev-name">#18 NLH Elite 500</div><div class="ev-rank">1位 / 100人 (12.4292pt)</div></div></div>
 <div class="ev-card"><div class="ev-info"><div class="ev-name">#31 NLH Night Parade</div><div class="ev-rank">4位 / 178人 (8.2593pt)</div></div></div>
@@ -440,7 +455,7 @@ https://prize-checker.com/ujpi
 https://prize-checker.com/ujpi
 
 #ポーカー戦績ランキング 　#プライズチェッカー" data-flickr="https://www.flickr.com/photos/201752439@N08/55089111994/in/album-72177720331803917" onclick="shareToX(this,event)"><svg class="x-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> ポストする</a></div></td></tr>
-<tr class="player-row" data-rank="3" onclick="toggle('r3')"><td class="rank">3rd</td><td class="name">アントニー</td><td class="score">37.5487</td><td class="count">4</td></tr>
+<tr class="player-row" data-rank="3" onclick="toggle('r3')"><td class="rank rank-3"><span class="medal">🥉</span>3rd</td><td class="name">アントニー</td><td class="score">37.5487</td><td class="count">4</td></tr>
 <tr class="detail-row" data-rank="3" id="r3"><td colspan="4"><div class="ev-container"><div class="ev-card"><div class="ev-info"><div class="ev-name">#03 NLH Elite 500</div><div class="ev-rank">4位 / 196人 (10.5039pt)</div></div></div>
 <div class="ev-card"><div class="ev-info"><div class="ev-name">#16 NLH Lucky Clover -Mystery Bounty-</div><div class="ev-rank">9位 / 271人 (8.1647pt)</div></div></div>
 <div class="ev-card"><div class="ev-info"><div class="ev-name">#28 NLH Elite 500</div><div class="ev-rank">3位 / 133人 (10.2338pt)</div></div></div>
@@ -454,7 +469,7 @@ https://prize-checker.com/ujpi
 https://prize-checker.com/ujpi
 
 #ポーカー戦績ランキング 　#プライズチェッカー" data-flickr="https://www.flickr.com/photos/201752439@N08/55089054433/in/album-72177720331803917" onclick="shareToX(this,event)"><svg class="x-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> ポストする</a></div></td></tr>
-<tr class="player-row" data-rank="4" onclick="toggle('r4')"><td class="rank">4th</td><td class="name">payji</td><td class="score">30.1927</td><td class="count">4</td></tr>
+<tr class="player-row" data-rank="4" onclick="toggle('r4')"><td class="rank rank-top10">4th</td><td class="name">payji</td><td class="score">30.1927</td><td class="count">4</td></tr>
 <tr class="detail-row" data-rank="4" id="r4"><td colspan="4"><div class="ev-container"><div class="ev-card"><div class="ev-info"><div class="ev-name">#16 NLH Lucky Clover -Mystery Bounty-</div><div class="ev-rank">11位 / 271人 (7.6835pt)</div></div></div>
 <div class="ev-card"><div class="ev-info"><div class="ev-name">#31 NLH Night Parade</div><div class="ev-rank">16位 / 178人 (5.2426pt)</div></div></div>
 <div class="ev-card"><div class="ev-info"><div class="ev-name">#41 NLH Nightstack</div><div class="ev-rank">2位 / 184人 (10.4048pt)</div></div></div>
@@ -468,7 +483,7 @@ https://prize-checker.com/ujpi
 https://prize-checker.com/ujpi
 
 #ポーカー戦績ランキング 　#プライズチェッカー" data-flickr="https://www.flickr.com/photos/201752439@N08/55089280947/in/album-72177720331830674/" onclick="shareToX(this,event)"><svg class="x-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> ポストする</a></div></td></tr>
-<tr class="player-row" data-rank="5" onclick="toggle('r5')"><td class="rank">5th</td><td class="name">AT_poker</td><td class="score">26.8432</td><td class="count">2</td></tr>
+<tr class="player-row" data-rank="5" onclick="toggle('r5')"><td class="rank rank-top10">5th</td><td class="name">AT_poker</td><td class="score">26.8432</td><td class="count">2</td></tr>
 <tr class="detail-row" data-rank="5" id="r5"><td colspan="4"><div class="ev-container"><div class="ev-card"><div class="ev-info"><div class="ev-name">#01 NLH Main Event</div><div class="ev-rank">16位 / 2500人 (14.6648pt)</div></div></div>
 <div class="ev-card"><div class="ev-info"><div class="ev-name">#64 NLH Noble Spade</div><div class="ev-rank">2位 / 273人 (12.1783pt)</div></div></div></div><div class="share-section"><a class="share-x-btn" href="#" data-text="📊JAPAN POKER INDEX📊
 
@@ -480,7 +495,7 @@ https://prize-checker.com/ujpi
 https://prize-checker.com/ujpi
 
 #ポーカー戦績ランキング 　#プライズチェッカー" data-flickr="https://www.flickr.com/photos/201752439@N08/55096239491/in/album-72177720331804092" onclick="shareToX(this,event)"><svg class="x-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> ポストする</a></div></td></tr>
-<tr class="player-row" data-rank="6" onclick="toggle('r6')"><td class="rank">6th</td><td class="name">UTTU</td><td class="score">25.6728</td><td class="count">3</td></tr>
+<tr class="player-row" data-rank="6" onclick="toggle('r6')"><td class="rank rank-top10">6th</td><td class="name">UTTU</td><td class="score">25.6728</td><td class="count">3</td></tr>
 <tr class="detail-row" data-rank="6" id="r6"><td colspan="4"><div class="ev-container"><div class="ev-card"><div class="ev-info"><div class="ev-name">#07 NLH Twinkle Night</div><div class="ev-rank">15位 / 177人 (4.9362pt)</div></div></div>
 <div class="ev-card"><div class="ev-info"><div class="ev-name">#11 NLH Superstack</div><div class="ev-rank">3位 / 317人 (10.7235pt)</div></div></div>
 <div class="ev-card"><div class="ev-info"><div class="ev-name">#23 NLH Casualstack</div><div class="ev-rank">1位 / 279人 (10.0131pt)</div></div></div></div><div class="share-section"><a class="share-x-btn" href="#" data-text="📊JAPAN POKER INDEX📊
@@ -493,7 +508,7 @@ https://prize-checker.com/ujpi
 https://prize-checker.com/ujpi
 
 #ポーカー戦績ランキング 　#プライズチェッカー" data-flickr="https://www.flickr.com/photos/201752439@N08/55088803096/in/album-72177720331796995" onclick="shareToX(this,event)"><svg class="x-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> ポストする</a></div></td></tr>
-<tr class="player-row" data-rank="7" onclick="toggle('r7')"><td class="rank">7th</td><td class="name">chiharu</td><td class="score">25.4921</td><td class="count">3</td></tr>
+<tr class="player-row" data-rank="7" onclick="toggle('r7')"><td class="rank rank-top10">7th</td><td class="name">chiharu</td><td class="score">25.4921</td><td class="count">3</td></tr>
 <tr class="detail-row" data-rank="7" id="r7"><td colspan="4"><div class="ev-container"><div class="ev-card"><div class="ev-info"><div class="ev-name">#27 NLH Dot Rush</div><div class="ev-rank">4位 / 270人 (8.0161pt)</div></div></div>
 <div class="ev-card"><div class="ev-info"><div class="ev-name">#49 NLH Legacy Sponsored by 百花繚乱</div><div class="ev-rank">4位 / 479人 (10.6736pt)</div></div></div>
 <div class="ev-card"><div class="ev-info"><div class="ev-name">#59 NL 2-7 Single Draw</div><div class="ev-rank">3位 / 90人 (6.8024pt)</div></div></div></div><div class="share-section"><a class="share-x-btn" href="#" data-text="📊JAPAN POKER INDEX📊
@@ -506,7 +521,7 @@ https://prize-checker.com/ujpi
 https://prize-checker.com/ujpi
 
 #ポーカー戦績ランキング 　#プライズチェッカー" data-flickr="https://www.flickr.com/photos/201752439@N08/55091953073/in/album-72177720331830714/" onclick="shareToX(this,event)"><svg class="x-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> ポストする</a></div></td></tr>
-<tr class="player-row" data-rank="8" onclick="toggle('r8')"><td class="rank">8th</td><td class="name">えね</td><td class="score">25.1695</td><td class="count">2</td></tr>
+<tr class="player-row" data-rank="8" onclick="toggle('r8')"><td class="rank rank-top10">8th</td><td class="name">えね</td><td class="score">25.1695</td><td class="count">2</td></tr>
 <tr class="detail-row" data-rank="8" id="r8"><td colspan="4"><div class="ev-container"><div class="ev-card"><div class="ev-info"><div class="ev-name">#51 NLH Supernova</div><div class="ev-rank">1位 / 168人 (16.2742pt)</div></div></div>
 <div class="ev-card"><div class="ev-info"><div class="ev-name">#39 NLH Elite 500</div><div class="ev-rank">5位 / 135人 (8.8954pt)</div></div></div></div><div class="share-section"><a class="share-x-btn" href="#" data-text="📊JAPAN POKER INDEX📊
 
@@ -518,7 +533,7 @@ https://prize-checker.com/ujpi
 https://prize-checker.com/ujpi
 
 #ポーカー戦績ランキング 　#プライズチェッカー" data-flickr="https://www.flickr.com/photos/201752439@N08/55095882838/in/album-72177720331830844" onclick="shareToX(this,event)"><svg class="x-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> ポストする</a></div></td></tr>
-<tr class="player-row" data-rank="9" onclick="toggle('r9')"><td class="rank">9th</td><td class="name">たか</td><td class="score">25.0731</td><td class="count">2</td></tr>
+<tr class="player-row" data-rank="9" onclick="toggle('r9')"><td class="rank rank-top10">9th</td><td class="name">たか</td><td class="score">25.0731</td><td class="count">2</td></tr>
 <tr class="detail-row" data-rank="9" id="r9"><td colspan="4"><div class="ev-container"><div class="ev-card"><div class="ev-info"><div class="ev-name">#01 NLH Main Event</div><div class="ev-rank">11位 / 2500人 (15.7526pt)</div></div></div>
 <div class="ev-card"><div class="ev-info"><div class="ev-name">#63 NLH One Spark</div><div class="ev-rank">1位 / 550人 (9.3205pt)</div></div></div></div><div class="share-section"><a class="share-x-btn" href="#" data-text="📊JAPAN POKER INDEX📊
 
@@ -530,7 +545,7 @@ https://prize-checker.com/ujpi
 https://prize-checker.com/ujpi
 
 #ポーカー戦績ランキング 　#プライズチェッカー" data-flickr="https://www.flickr.com/photos/201752439@N08/55096509534/in/album-72177720331804092" onclick="shareToX(this,event)"><svg class="x-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> ポストする</a></div></td></tr>
-<tr class="player-row" data-rank="10" onclick="toggle('r10')"><td class="rank">10th</td><td class="name">ゆーいち</td><td class="score">24.8475</td><td class="count">3</td></tr>
+<tr class="player-row" data-rank="10" onclick="toggle('r10')"><td class="rank rank-top10">10th</td><td class="name">ゆーいち</td><td class="score">24.8475</td><td class="count">3</td></tr>
 <tr class="detail-row" data-rank="10" id="r10"><td colspan="4"><div class="ev-container"><div class="ev-card"><div class="ev-info"><div class="ev-name">#19 NLH Excite Bounty</div><div class="ev-rank">2位 / 168人 (8.6589pt)</div></div></div>
 <div class="ev-card"><div class="ev-info"><div class="ev-name">#41 NLH Nightstack</div><div class="ev-rank">5位 / 184人 (8.2964pt)</div></div></div>
 <div class="ev-card"><div class="ev-info"><div class="ev-name">#51 NLH Supernova</div><div class="ev-rank">14位 / 168人 (7.8923pt)</div></div></div></div><div class="share-section"><a class="share-x-btn" href="#" data-text="📊JAPAN POKER INDEX📊

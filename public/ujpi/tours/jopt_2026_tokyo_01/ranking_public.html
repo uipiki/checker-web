@@ -156,10 +156,21 @@ th.count { text-align: right; }
   border-bottom: 1px solid #1e2f44;
 }
 .rank {
-  width: 56px;
+  width: 72px;
   font-weight: 600;
   color: #7f9aad;
+  white-space: nowrap;
 }
+.rank .medal {
+  display: inline-block;
+  margin-right: 4px;
+  font-size: 1.15em;
+  vertical-align: -2px;
+}
+.rank-1 { color: #f5c542; font-weight: 700; }
+.rank-2 { color: #c8ccd4; font-weight: 700; }
+.rank-3 { color: #d98a4a; font-weight: 700; }
+.rank-top10 { color: #b08030; font-weight: 600; }
 .name {
   font-weight: 600;
   color: #e8edf2;
@@ -254,7 +265,7 @@ th.count { text-align: right; }
 }
 .x-link {
   display: inline-flex; align-items: center; justify-content: center;
-  vertical-align: text-bottom; margin-left: 6px;
+  vertical-align: text-bottom; margin-left: 12px;
   width: 20px; height: 20px; border-radius: 50%;
   background: #2a3a4a; transition: background 0.15s;
   text-decoration: none;
@@ -292,7 +303,7 @@ th.count { text-align: right; }
   .search-box { padding: 10px 12px; font-size: 16px; }
   th { padding: 8px 8px; font-size: 0.7em; }
   th.score { text-align: right; position: relative; }
-  .rank { width: 40px; }
+  .rank { width: 56px; }
   .player-row td { padding: 8px 8px; }
   .name { font-size: 0.85em; }
   .score { font-size: 0.85em; }
@@ -353,6 +364,10 @@ html[data-theme="light"] .player-link:hover { color: #1a6abf; }
 html[data-theme="light"] .score { color: #9a6800; }
 html[data-theme="light"] .count,
 html[data-theme="light"] .rank { color: #5a6a7a; }
+html[data-theme="light"] .rank-1 { color: #c89a10; }
+html[data-theme="light"] .rank-2 { color: #7a8899; }
+html[data-theme="light"] .rank-3 { color: #b5651d; }
+html[data-theme="light"] .rank-top10 { color: #9a6800; }
 html[data-theme="light"] .detail-row td { background: #dde3ec; border-bottom-color: #d0d8e4; }
 html[data-theme="light"] .ev-card { background: #e8ecf2; border-color: #c8d0dc; }
 html[data-theme="light"] .ev-row { border-bottom-color: #d0d8e4; }
@@ -412,7 +427,7 @@ gtag("config", "G-ZX9DZ00N62");
   <th class="score">Score<span class="score-help">&#9432;</span><span class="score-tip">GPI準拠方式。log(参加者数/順位) × (1 + log10(バイイン/基準額))で算出。フィールドサイズが大きいほどスコアが高くなる。フィールド上限2700人。</span></th>
   <th class="count">Events</th>
 </tr></thead>
-<tbody><tr class="player-row" data-rank="1" onclick="toggle('r1')"><td class="rank">1st</td><td class="name">Eisuke</td><td class="score">54.6132</td><td class="count">5</td></tr>
+<tbody><tr class="player-row" data-rank="1" onclick="toggle('r1')"><td class="rank rank-1"><span class="medal">🥇</span>1st</td><td class="name">Eisuke</td><td class="score">54.6132</td><td class="count">5</td></tr>
 <tr class="detail-row" data-rank="1" id="r1"><td colspan="4"><div class="ev-container"><div class="ev-card"><div class="ev-info"><div class="ev-name">#01 NLH Main Event</div><div class="ev-rank">133位 / 3241人 (7.732pt)</div></div></div>
 <div class="ev-card"><div class="ev-info"><div class="ev-name">#24 NLH Deepstack - イヨシコーラ -</div><div class="ev-rank">3位 / 288人 (10.5027pt)</div></div></div>
 <div class="ev-card"><div class="ev-info"><div class="ev-name">#44 NLH Turbo</div><div class="ev-rank">3位 / 317人 (9.6896pt)</div></div></div>
@@ -427,7 +442,7 @@ gtag("config", "G-ZX9DZ00N62");
 https://prize-checker.com/ujpi
 
 #ポーカー戦績ランキング 　#プライズチェッカー" data-flickr="https://www.flickr.com/photos/190979093@N07/55019699087/in/album-72177720331144628/" onclick="shareToX(this,event)"><svg class="x-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> ポストする</a></div></td></tr>
-<tr class="player-row" data-rank="2" onclick="toggle('r2')"><td class="rank">2nd</td><td class="name">Atsushi</td><td class="score">53.3258</td><td class="count">6</td></tr>
+<tr class="player-row" data-rank="2" onclick="toggle('r2')"><td class="rank rank-2"><span class="medal">🥈</span>2nd</td><td class="name">Atsushi</td><td class="score">53.3258</td><td class="count">6</td></tr>
 <tr class="detail-row" data-rank="2" id="r2"><td colspan="4"><div class="ev-container"><div class="ev-card"><div class="ev-info"><div class="ev-name">#09 PLO Kick off</div><div class="ev-rank">4位 / 61人 (6.2693pt)</div></div></div>
 <div class="ev-card"><div class="ev-info"><div class="ev-name">#15 NLH Superstack powered by渋谷×Poker シャルル</div><div class="ev-rank">3位 / 428人 (11.4143pt)</div></div></div>
 <div class="ev-card"><div class="ev-info"><div class="ev-name">#58 NLH Deepstack</div><div class="ev-rank">3位 / 403人 (11.2758pt)</div></div></div>
@@ -443,7 +458,7 @@ https://prize-checker.com/ujpi
 https://prize-checker.com/ujpi
 
 #ポーカー戦績ランキング 　#プライズチェッカー" data-flickr="https://www.flickr.com/photos/190979093@N07/55008408304/in/album-72177720331151859" onclick="shareToX(this,event)"><svg class="x-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> ポストする</a></div></td></tr>
-<tr class="player-row" data-rank="3" onclick="toggle('r3')"><td class="rank">3rd</td><td class="name">Daichi</td><td class="score">49.6568</td><td class="count">5</td></tr>
+<tr class="player-row" data-rank="3" onclick="toggle('r3')"><td class="rank rank-3"><span class="medal">🥉</span>3rd</td><td class="name">Daichi</td><td class="score">49.6568</td><td class="count">5</td></tr>
 <tr class="detail-row" data-rank="3" id="r3"><td colspan="4"><div class="ev-container"><div class="ev-card"><div class="ev-info"><div class="ev-name">#20 NLH Good Game 1000</div><div class="ev-rank">1位 / 165人 (15.3178pt)</div></div></div>
 <div class="ev-card"><div class="ev-info"><div class="ev-name">#52 NLH 6-max Championship</div><div class="ev-rank">13位 / 164人 (8.0511pt)</div></div></div>
 <div class="ev-card"><div class="ev-info"><div class="ev-name">#67 NLH Good Game 1000</div><div class="ev-rank">4位 / 120人 (10.2036pt)</div></div></div>
@@ -458,7 +473,7 @@ https://prize-checker.com/ujpi
 https://prize-checker.com/ujpi
 
 #ポーカー戦績ランキング 　#プライズチェッカー" data-flickr="https://www.flickr.com/photos/190979093@N07/55010672450/in/album-72177720331126551/" onclick="shareToX(this,event)"><svg class="x-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> ポストする</a></div></td></tr>
-<tr class="player-row" data-rank="4" onclick="toggle('r4')"><td class="rank">4th</td><td class="name">WATA</td><td class="score">49.5776</td><td class="count">5</td></tr>
+<tr class="player-row" data-rank="4" onclick="toggle('r4')"><td class="rank rank-top10">4th</td><td class="name">WATA</td><td class="score">49.5776</td><td class="count">5</td></tr>
 <tr class="detail-row" data-rank="4" id="r4"><td colspan="4"><div class="ev-container"><div class="ev-card"><a href="https://www.flickr.com/photos/190979093@N07/55008521679/in/album-72177720331117015" target="_blank"><img src="https://live.staticflickr.com/65535/55008521679_a7e504733f_w.jpg" alt="WATA"></a><div class="ev-info"><div class="ev-name">#02 NLH Warm-up</div><div class="ev-rank">8位 / 608人 (9.0044pt)</div></div></div>
 <div class="ev-card"><a href="https://www.flickr.com/photos/190979093@N07/55010133830/in/album-72177720331117720" target="_blank"><img src="https://live.staticflickr.com/65535/55010133830_9b42120956_w.jpg" alt="WATA"></a><div class="ev-info"><div class="ev-name">#22 NLH Fulltilt Sponsored by パンクラス</div><div class="ev-rank">2位 / 170人 (10.6532pt)</div></div></div>
 <div class="ev-card"><a href="https://www.flickr.com/photos/190979093@N07/55012159624/in/album-72177720331127447/" target="_blank"><img src="https://live.staticflickr.com/65535/55012159624_d18575411f_w.jpg" alt="WATA"></a><div class="ev-info"><div class="ev-name">#36 NLH Good Game 2000</div><div class="ev-rank">10位 / 96人 (7.1836pt)</div></div></div>
@@ -473,7 +488,7 @@ https://prize-checker.com/ujpi
 https://prize-checker.com/ujpi
 
 #ポーカー戦績ランキング 　#プライズチェッカー" data-flickr="https://www.flickr.com/photos/190979093@N07/55008521679/in/album-72177720331117015" onclick="shareToX(this,event)"><svg class="x-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> ポストする</a></div></td></tr>
-<tr class="player-row" data-rank="5" onclick="toggle('r5')"><td class="rank">5th</td><td class="name">puluta</td><td class="score">43.6323</td><td class="count">5</td></tr>
+<tr class="player-row" data-rank="5" onclick="toggle('r5')"><td class="rank rank-top10">5th</td><td class="name">puluta</td><td class="score">43.6323</td><td class="count">5</td></tr>
 <tr class="detail-row" data-rank="5" id="r5"><td colspan="4"><div class="ev-container"><div class="ev-card"><div class="ev-info"><div class="ev-name">#01 NLH Main Event</div><div class="ev-rank">48位 / 3241人 (10.3494pt)</div></div></div>
 <div class="ev-card"><div class="ev-info"><div class="ev-name">#03 NLH Mini Main Event</div><div class="ev-rank">9位 / 812人 (8.3071pt)</div></div></div>
 <div class="ev-card"><div class="ev-info"><div class="ev-name">#30 NLH Bigstack Hyper</div><div class="ev-rank">13位 / 231人 (5.7549pt)</div></div></div>
@@ -488,7 +503,7 @@ https://prize-checker.com/ujpi
 https://prize-checker.com/ujpi
 
 #ポーカー戦績ランキング 　#プライズチェッカー" data-flickr="https://www.flickr.com/photos/190979093@N07/55020684300/in/album-72177720331144628" onclick="shareToX(this,event)"><svg class="x-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> ポストする</a></div></td></tr>
-<tr class="player-row" data-rank="6" onclick="toggle('r6')"><td class="rank">6th</td><td class="name">Pasmo</td><td class="score">43.0857</td><td class="count">5</td></tr>
+<tr class="player-row" data-rank="6" onclick="toggle('r6')"><td class="rank rank-top10">6th</td><td class="name">Pasmo</td><td class="score">43.0857</td><td class="count">5</td></tr>
 <tr class="detail-row" data-rank="6" id="r6"><td colspan="4"><div class="ev-container"><div class="ev-card"><div class="ev-info"><div class="ev-name">#01 NLH Main Event</div><div class="ev-rank">43位 / 3241人 (10.6319pt)</div></div></div>
 <div class="ev-card"><div class="ev-info"><div class="ev-name">#03 NLH Mini Main Event</div><div class="ev-rank">87位 / 812人 (4.1212pt)</div></div></div>
 <div class="ev-card"><div class="ev-info"><div class="ev-name">#23 NLH Good Game 500</div><div class="ev-rank">5位 / 192人 (9.846pt)</div></div></div>
@@ -503,7 +518,7 @@ https://prize-checker.com/ujpi
 https://prize-checker.com/ujpi
 
 #ポーカー戦績ランキング 　#プライズチェッカー" data-flickr="https://www.flickr.com/photos/190979093@N07/55020841419/in/album-72177720331144628" onclick="shareToX(this,event)"><svg class="x-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> ポストする</a></div></td></tr>
-<tr class="player-row" data-rank="7" onclick="toggle('r7')"><td class="rank">7th</td><td class="name">せい</td><td class="score">39.1653</td><td class="count">3</td></tr>
+<tr class="player-row" data-rank="7" onclick="toggle('r7')"><td class="rank rank-top10">7th</td><td class="name">せい</td><td class="score">39.1653</td><td class="count">3</td></tr>
 <tr class="detail-row" data-rank="7" id="r7"><td colspan="4"><div class="ev-container"><div class="ev-card"><div class="ev-info"><div class="ev-name">#23 NLH Good Game 500</div><div class="ev-rank">1位 / 192人 (14.1898pt)</div></div></div>
 <div class="ev-card"><div class="ev-info"><div class="ev-name">#103 NLH Deepstack</div><div class="ev-rank">1位 / 498人 (14.2908pt)</div></div></div>
 <div class="ev-card"><div class="ev-info"><div class="ev-name">#113 NLH Hyper</div><div class="ev-rank">1位 / 209人 (10.6847pt)</div></div></div></div><div class="share-section"><a class="share-x-btn" href="#" data-text="📊JAPAN POKER INDEX📊
@@ -516,7 +531,7 @@ https://prize-checker.com/ujpi
 https://prize-checker.com/ujpi
 
 #ポーカー戦績ランキング 　#プライズチェッカー" data-flickr="https://www.flickr.com/photos/190979093@N07/55010794849/in/album-72177720331152309" onclick="shareToX(this,event)"><svg class="x-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> ポストする</a></div></td></tr>
-<tr class="player-row" data-rank="8" onclick="toggle('r8')"><td class="rank">8th</td><td class="name">shopmaker</td><td class="score">34.7928</td><td class="count">5</td></tr>
+<tr class="player-row" data-rank="8" onclick="toggle('r8')"><td class="rank rank-top10">8th</td><td class="name">shopmaker</td><td class="score">34.7928</td><td class="count">5</td></tr>
 <tr class="detail-row" data-rank="8" id="r8"><td colspan="4"><div class="ev-container"><div class="ev-card"><div class="ev-info"><div class="ev-name">#21 PLO Championship</div><div class="ev-rank">7位 / 75人 (6.4008pt)</div></div></div>
 <div class="ev-card"><div class="ev-info"><div class="ev-name">#43 FL Split MIX</div><div class="ev-rank">5位 / 71人 (6.1052pt)</div></div></div>
 <div class="ev-card"><div class="ev-info"><div class="ev-name">#51 FL H.O.R.S.E.</div><div class="ev-rank">2位 / 49人 (7.6702pt)</div></div></div>
@@ -531,7 +546,7 @@ https://prize-checker.com/ujpi
 https://prize-checker.com/ujpi
 
 #ポーカー戦績ランキング 　#プライズチェッカー" data-flickr="https://www.flickr.com/photos/190979093@N07/55010128758/in/album-72177720331142393" onclick="shareToX(this,event)"><svg class="x-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> ポストする</a></div></td></tr>
-<tr class="player-row" data-rank="9" onclick="toggle('r9')"><td class="rank">9th</td><td class="name">Oka</td><td class="score">34.4970</td><td class="count">5</td></tr>
+<tr class="player-row" data-rank="9" onclick="toggle('r9')"><td class="rank rank-top10">9th</td><td class="name">Oka</td><td class="score">34.4970</td><td class="count">5</td></tr>
 <tr class="detail-row" data-rank="9" id="r9"><td colspan="4"><div class="ev-container"><div class="ev-card"><div class="ev-info"><div class="ev-name">#58 NLH Deepstack</div><div class="ev-rank">13位 / 403人 (7.9017pt)</div></div></div>
 <div class="ev-card"><div class="ev-info"><div class="ev-name">#65 NLH Builder</div><div class="ev-rank">5位 / 373人 (9.3836pt)</div></div></div>
 <div class="ev-card"><div class="ev-info"><div class="ev-name">#99 NLH Turbo</div><div class="ev-rank">23位 / 286人 (5.2406pt)</div></div></div>
@@ -546,7 +561,7 @@ https://prize-checker.com/ujpi
 https://prize-checker.com/ujpi
 
 #ポーカー戦績ランキング 　#プライズチェッカー" data-flickr="https://www.flickr.com/photos/190979093@N07/55014429659/in/album-72177720331126941" onclick="shareToX(this,event)"><svg class="x-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> ポストする</a></div></td></tr>
-<tr class="player-row" data-rank="10" onclick="toggle('r10')"><td class="rank">10th</td><td class="name">CSMARS</td><td class="score">34.1478</td><td class="count">4</td></tr>
+<tr class="player-row" data-rank="10" onclick="toggle('r10')"><td class="rank rank-top10">10th</td><td class="name">CSMARS</td><td class="score">34.1478</td><td class="count">4</td></tr>
 <tr class="detail-row" data-rank="10" id="r10"><td colspan="4"><div class="ev-container"><div class="ev-card"><div class="ev-info"><div class="ev-name">#10 NLH Champions Bounty</div><div class="ev-rank">1位 / 319人 (13.2659pt)</div></div></div>
 <div class="ev-card"><div class="ev-info"><div class="ev-name">#88 NL Super Hold&#x27;em</div><div class="ev-rank">10位 / 204人 (6.2698pt)</div></div></div>
 <div class="ev-card"><div class="ev-info"><div class="ev-name">#94 NLH Mystery Bounty</div><div class="ev-rank">29位 / 725人 (7.9735pt)</div></div></div>
