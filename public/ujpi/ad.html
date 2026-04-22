@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>広告掲載のご案内 - JAPAN POKER DATABASE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  background: #0f1923; color: #e8edf2;
+  min-height: 100vh; line-height: 1.7;
+}
+.site-header {
+  position: sticky; top: 0; z-index: 20;
+  background: #0f1923; border-bottom: 1px solid #1e2f44;
+  padding: 0 24px;
+}
+.site-header-inner {
+  max-width: 960px; margin: 0 auto;
+  display: flex; align-items: center; gap: 16px;
+  padding: 12px 0;
+}
+.site-logo { height: 120px; width: auto; display: block; }
+.page-hero {
+  max-width: 960px; margin: 0 auto;
+  padding: 72px 24px 56px;
+  border-bottom: 1px solid #1e2f44;
+}
+.page-hero-label {
+  font-size: 0.72em; font-weight: 600; color: #d4a017;
+  letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 20px;
+}
+.page-hero-title {
+  font-size: 2.4em; font-weight: 700;
+  line-height: 1.25; margin-bottom: 20px;
+}
+.page-hero-sub {
+  font-size: 1.05em; color: #c0cad6;
+  font-weight: 300; letter-spacing: 0.04em;
+}
+.page-body { max-width: 960px; margin: 0 auto; padding: 0 24px 80px; }
+.page-section { padding: 56px 0; border-bottom: 1px solid #1e2f44; }
+.page-section:last-child { border-bottom: none; }
+.section-eyebrow {
+  font-size: 0.7em; font-weight: 600; color: #d4a017;
+  letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 12px;
+}
+.section-heading { font-size: 1.35em; font-weight: 700; margin-bottom: 24px; line-height: 1.4; }
+.section-body p { font-size: 0.95em; color: #c0cad6; margin-bottom: 16px; line-height: 1.85; }
+.section-body p:last-child { margin-bottom: 0; }
+
+/* カード */
+.card-list { display: flex; flex-direction: column; gap: 16px; margin-top: 8px; }
+.card {
+  background: #162030; border: 1px solid #2a3f5f;
+  border-radius: 10px; padding: 22px 24px;
+}
+.card-title {
+  font-size: 0.88em; font-weight: 700; color: #e8edf2;
+  margin-bottom: 8px; display: flex; align-items: center; gap: 8px;
+}
+.card-title::before {
+  content: ""; display: inline-block;
+  width: 3px; height: 14px;
+  background: #d4a017; border-radius: 2px; flex-shrink: 0;
+}
+.card-body { font-size: 0.85em; color: #c0cad6; line-height: 1.8; }
+
+/* 料金テーブル */
+.plan-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+.plan-table th, .plan-table td {
+  padding: 14px 20px; text-align: left;
+  border-bottom: 1px solid #2a3f5f; font-size: 0.9em;
+}
+.plan-table th {
+  background: #162030; color: #7f9aad;
+  font-weight: 600; letter-spacing: 0.06em; font-size: 0.78em;
+  text-transform: uppercase;
+}
+.plan-table tr:last-child td { border-bottom: none; }
+.plan-table .price { color: #d4a017; font-weight: 700; }
+.plan-note {
+  margin-top: 14px; font-size: 0.8em; color: #7f9aad; line-height: 1.7;
+}
+
+/* バナープレビュー */
+.banner-preview {
+  margin-top: 20px;
+  background: #162030; border: 1px dashed #2a3f5f;
+  border-radius: 8px;
+  width: 100%; max-width: 600px; height: 80px;
+  display: flex; align-items: center; justify-content: center;
+  color: #3a5068; font-size: 0.75em; font-weight: 600; letter-spacing: 0.15em;
+}
+.banner-spec {
+  margin-top: 12px; font-size: 0.82em; color: #7f9aad; line-height: 1.8;
+}
+
+/* チェックリスト */
+.check-list { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
+.check-list li {
+  display: flex; align-items: flex-start; gap: 12px;
+  font-size: 0.92em; color: #c0cad6; line-height: 1.7;
+}
+.check-list li::before {
+  content: "✓";
+  color: #d4a017; font-weight: 700; flex-shrink: 0; margin-top: 2px;
+}
+
+/* お問い合わせボックス */
+.contact-box {
+  margin-top: 8px;
+  background: linear-gradient(135deg, #162030 0%, #1a2a3a 100%);
+  border: 1px solid #2a3f5f; border-left: 3px solid #d4a017;
+  border-radius: 8px; padding: 28px 28px;
+}
+.contact-box p { font-size: 0.92em; color: #c0cad6; line-height: 1.85; margin-bottom: 16px; }
+.contact-email {
+  display: inline-block;
+  font-size: 1.05em; font-weight: 600; color: #4a9eff;
+  text-decoration: none; letter-spacing: 0.04em;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s;
+}
+.contact-email:hover { border-bottom-color: #4a9eff; }
+.contact-note {
+  margin-top: 14px; font-size: 0.8em; color: #7f9aad; line-height: 1.7;
+}
+
+/* ライトモード */
+html[data-theme="light"] body { background: #f4f6f9; color: #1a2332; }
+html[data-theme="light"] .site-header { background: #f4f6f9; border-bottom-color: #d0d8e4; }
+html[data-theme="light"] .page-hero { border-bottom-color: #d0d8e4; }
+html[data-theme="light"] .page-hero-sub { color: #5a6a7a; }
+html[data-theme="light"] .page-section { border-bottom-color: #d0d8e4; }
+html[data-theme="light"] .section-body p { color: #3a4a5a; }
+html[data-theme="light"] .card { background: #e8ecf2; border-color: #c8d0dc; }
+html[data-theme="light"] .card-title { color: #1a2332; }
+html[data-theme="light"] .card-body { color: #4a5a6a; }
+html[data-theme="light"] .plan-table th { background: #e8ecf2; color: #5a6a7a; border-bottom-color: #c8d0dc; }
+html[data-theme="light"] .plan-table td { border-bottom-color: #d0d8e4; }
+html[data-theme="light"] .banner-preview { background: #e8ecf2; border-color: #c8d0dc; color: #8a9aaa; }
+html[data-theme="light"] .banner-spec { color: #5a6a7a; }
+html[data-theme="light"] .check-list li { color: #3a4a5a; }
+html[data-theme="light"] .contact-box { background: #e8ecf2; border-color: #c8d0dc; color: #3a4a5a; border-left-color: #d4a017; }
+html[data-theme="light"] .contact-box p { color: #3a4a5a; }
+html[data-theme="light"] .contact-note { color: #5a6a7a; }
+html[data-theme="light"] .plan-note { color: #5a6a7a; }
+
+@media (max-width: 640px) {
+  .page-hero { padding: 48px 16px 40px; }
+  .page-hero-title { font-size: 1.7em; }
+  .page-body { padding: 0 16px 60px; }
+  .page-section { padding: 40px 0; }
+  .card { padding: 16px; }
+  .plan-table th, .plan-table td { padding: 12px 12px; font-size: 0.85em; }
+  .contact-box { padding: 20px; }
+}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZX9DZ00N62"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag("js", new Date());
+gtag("config", "G-ZX9DZ00N62");
+</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="/ujpi/"><img src="/ujpi/JPD_logo.PNG" alt="JAPAN POKER DATABASE" class="site-logo"></a>
+  </div>
+</header>
+
+<div class="page-hero">
+  <div class="page-hero-label">Advertise</div>
+  <h1 class="page-hero-title">広告掲載のご案内</h1>
+  <p class="page-hero-sub">日本のポーカープレイヤーに、直接リーチできる広告枠です。</p>
+</div>
+
+<div class="page-body">
+
+  <!-- サイト紹介 -->
+  <section class="page-section">
+    <div class="section-eyebrow">About JPD</div>
+    <h2 class="section-heading">JAPAN POKER DATABASE について</h2>
+    <div class="section-body">
+      <p>JAPAN POKER DATABASE（JPD）は、日本国内の主要ポーカートーナメントの戦績を集約し、プレイヤーランキングを提供するデータベースサイトです。</p>
+      <p>日本各地で開催される大規模トーナメントに実際に参加している、アクティブなポーカープレイヤーが主なユーザー層です。ポーカーに真剣に取り組むプレイヤーに向けて広告を届けたい方に最適な媒体です。</p>
+    </div>
+    <div class="card-list" style="margin-top: 28px;">
+      <div class="card">
+        <div class="card-title">ユーザー層</div>
+        <div class="card-body">日本国内のライブポーカートーナメント参加者。大会に積極的に参加するアクティブプレイヤーが中心です。</div>
+      </div>
+      <div class="card">
+        <div class="card-title">データベース規模</div>
+        <div class="card-body">3,500名以上のプレイヤーを収録。JOPT・SENGOKU・SPADIE・MASTERSなど主要大会の成績を網羅しています。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 掲載プラン -->
+  <section class="page-section">
+    <div class="section-eyebrow">Plan</div>
+    <h2 class="section-heading">掲載プラン</h2>
+    <div class="section-body">
+      <p>全ページ共通のヘッダーバナー枠を月額固定でご提供しています。</p>
+    </div>
+    <table class="plan-table" style="margin-top: 24px;">
+      <thead>
+        <tr>
+          <th>プラン</th>
+          <th>期間</th>
+          <th>料金</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>ショートプラン</td>
+          <td>1ヶ月</td>
+          <td class="price">お問い合わせください</td>
+        </tr>
+        <tr>
+          <td>スタンダードプラン</td>
+          <td>3ヶ月</td>
+          <td class="price">お問い合わせください</td>
+        </tr>
+        <tr>
+          <td>ロングプラン</td>
+          <td>6ヶ月</td>
+          <td class="price">お問い合わせください</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="plan-note">※ 複数枠・長期掲載については個別にご相談ください。</p>
+  </section>
+
+  <!-- 掲載箇所 -->
+  <section class="page-section">
+    <div class="section-eyebrow">Placement</div>
+    <h2 class="section-heading">掲載箇所・バナーサイズ</h2>
+    <div class="section-body">
+      <p>全ページのヘッダー部分に表示されるバナー広告です。スクロールしてもヘッダーは画面上部に固定されるため、常にユーザーの目に触れます。</p>
+    </div>
+    <div class="banner-preview">バナー掲載エリア（600 × 80px）</div>
+    <p class="banner-spec">
+      推奨サイズ：600 × 80px　／　対応形式：PNG・JPG・GIF（アニメーション可）<br>
+      ※ モバイル端末では非表示になります（PC・タブレット向け広告枠です）。
+    </p>
+  </section>
+
+  <!-- ご用意いただくもの -->
+  <section class="page-section">
+    <div class="section-eyebrow">Requirements</div>
+    <h2 class="section-heading">ご用意いただくもの</h2>
+    <ul class="check-list">
+      <li>バナー画像（600 × 80px、PNG / JPG / GIF）</li>
+      <li>リンク先URL</li>
+    </ul>
+    <div class="section-body" style="margin-top: 24px;">
+      <p>バナー画像のご用意が難しい場合は、ご要望に応じてこちらで制作することも可能です。お気軽にご相談ください。</p>
+    </div>
+  </section>
+
+  <!-- お問い合わせ -->
+  <section class="page-section">
+    <div class="section-eyebrow">Contact</div>
+    <h2 class="section-heading">お問い合わせ</h2>
+    <div class="contact-box">
+      <p>広告掲載をご検討の方は、下記メールアドレスまでお気軽にご連絡ください。料金・掲載期間・バナー制作など、詳細はメールにてご案内いたします。</p>
+      <a href="mailto:●●●@●●●.com" class="contact-email">●●●@●●●.com</a>
+      <p class="contact-note">※ 通常2〜3営業日以内にご返信いたします。</p>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>

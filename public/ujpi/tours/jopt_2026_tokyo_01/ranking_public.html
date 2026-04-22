@@ -271,8 +271,18 @@ th.count { text-align: right; }
 .x-link .x-icon { width: 12px; height: 12px; fill: #e8edf2; }
 .x-icon { width: 14px; height: 14px; fill: currentColor; }
 .share-section {
-  display: flex; justify-content: flex-end; margin-top: 10px;
+  display: flex; justify-content: flex-end; margin-top: 10px; gap: 8px;
 }
+.register-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: transparent; color: #7f9aad;
+  border: 1px solid #2a3f5f; border-radius: 6px;
+  padding: 8px 14px; font-size: 0.8em; font-family: inherit;
+  text-decoration: none; transition: all 0.15s; white-space: nowrap;
+}
+.register-btn:hover { background: #162030; color: #e8edf2; border-color: #4a6a8a; }
+html[data-theme="light"] .register-btn { color: #5a6a7a; border-color: #c8d0dc; }
+html[data-theme="light"] .register-btn:hover { background: #e8ecf2; color: #1a2332; }
 .share-x-btn {
   display: inline-flex; align-items: center; gap: 6px;
   background: #2a3a4a; color: #e8edf2; border: 1px solid #3a5a7a; border-radius: 6px;
@@ -26505,6 +26515,18 @@ function shareToX(el, ev) {
   window.open(intentUrl, '_blank', 'width=550,height=420');
 }
 
+// Xアカウント登録ボタンを全share-sectionに追加（未追加の場合のみ）
+document.querySelectorAll('.share-section').forEach(function(sec) {
+  if (!sec.querySelector('.register-btn')) {
+    const btn = document.createElement('a');
+    btn.href = '/ujpi/register.html';
+    btn.className = 'register-btn';
+    btn.target = '_blank';
+    btn.rel = 'noopener';
+    btn.textContent = 'Xアカウントを登録';
+    sec.insertBefore(btn, sec.firstChild);
+  }
+});
 </script>
 </body>
 </html>
