@@ -74,6 +74,29 @@ header h1 {
   white-space: nowrap;
   letter-spacing: 0.5px;
 }
+.tab-bar {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  border-bottom: 2px solid #2a3f5f;
+  margin-bottom: 10px;
+}
+.tab {
+  padding: 10px 20px;
+  color: #7f9aad;
+  text-decoration: none;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  font-weight: 600;
+  font-size: 0.95em;
+  transition: color 0.15s;
+}
+.tab:hover { color: #e8edf2; }
+.tab.active { color: #e8edf2; border-bottom-color: #d4a017; }
+html[data-theme="light"] .tab-bar { border-bottom-color: #c8d0dc; }
+html[data-theme="light"] .tab { color: #5a6a7a; }
+html[data-theme="light"] .tab:hover { color: #1a2332; }
+html[data-theme="light"] .tab.active { color: #1a2332; border-bottom-color: #9a6800; }
 .controls {
   max-width: 960px;
   margin: 0 auto 4px;
@@ -164,10 +187,21 @@ th.count { text-align: right; }
   border-bottom: 1px solid #1e2f44;
 }
 .rank {
-  width: 56px;
+  width: 72px;
   font-weight: 600;
   color: #7f9aad;
+  white-space: nowrap;
 }
+.rank .medal {
+  display: inline-block;
+  margin-right: 4px;
+  font-size: 1.15em;
+  vertical-align: -2px;
+}
+.rank-1 { color: #f5c542; font-weight: 700; }
+.rank-2 { color: #c8ccd4; font-weight: 700; }
+.rank-3 { color: #d98a4a; font-weight: 700; }
+.rank-top10 { color: #b08030; font-weight: 600; }
 .name {
   font-weight: 600;
   color: #e8edf2;
@@ -262,7 +296,7 @@ th.count { text-align: right; }
 }
 .x-link {
   display: inline-flex; align-items: center; justify-content: center;
-  vertical-align: text-bottom; margin-left: 6px;
+  vertical-align: text-bottom; margin-left: 12px;
   width: 20px; height: 20px; border-radius: 50%;
   background: #2a3a4a; transition: background 0.15s;
   text-decoration: none;
@@ -271,18 +305,8 @@ th.count { text-align: right; }
 .x-link .x-icon { width: 12px; height: 12px; fill: #e8edf2; }
 .x-icon { width: 14px; height: 14px; fill: currentColor; }
 .share-section {
-  display: flex; justify-content: flex-end; margin-top: 10px; gap: 8px;
+  display: flex; justify-content: flex-end; margin-top: 10px;
 }
-.register-btn {
-  display: inline-flex; align-items: center; gap: 6px;
-  background: transparent; color: #7f9aad;
-  border: 1px solid #2a3f5f; border-radius: 6px;
-  padding: 8px 14px; font-size: 0.8em; font-family: inherit;
-  text-decoration: none; transition: all 0.15s; white-space: nowrap;
-}
-.register-btn:hover { background: #162030; color: #e8edf2; border-color: #4a6a8a; }
-html[data-theme="light"] .register-btn { color: #5a6a7a; border-color: #c8d0dc; }
-html[data-theme="light"] .register-btn:hover { background: #e8ecf2; color: #1a2332; }
 .share-x-btn {
   display: inline-flex; align-items: center; gap: 6px;
   background: #2a3a4a; color: #e8edf2; border: 1px solid #3a5a7a; border-radius: 6px;
@@ -310,7 +334,7 @@ html[data-theme="light"] .register-btn:hover { background: #e8ecf2; color: #1a23
   .search-box { padding: 10px 12px; font-size: 16px; }
   th { padding: 8px 8px; font-size: 0.7em; }
   th.score { text-align: right; position: relative; }
-  .rank { width: 40px; }
+  .rank { width: 56px; }
   .player-row td { padding: 8px 8px; }
   .name { font-size: 0.85em; }
   .score { font-size: 0.85em; }
@@ -371,6 +395,10 @@ html[data-theme="light"] .player-link:hover { color: #1a6abf; }
 html[data-theme="light"] .score { color: #9a6800; }
 html[data-theme="light"] .count,
 html[data-theme="light"] .rank { color: #5a6a7a; }
+html[data-theme="light"] .rank-1 { color: #c89a10; }
+html[data-theme="light"] .rank-2 { color: #7a8899; }
+html[data-theme="light"] .rank-3 { color: #b5651d; }
+html[data-theme="light"] .rank-top10 { color: #9a6800; }
 html[data-theme="light"] .detail-row td { background: #dde3ec; border-bottom-color: #d0d8e4; }
 html[data-theme="light"] .ev-card { background: #e8ecf2; border-color: #c8d0dc; }
 html[data-theme="light"] .ev-row { border-bottom-color: #d0d8e4; }
@@ -396,32 +424,6 @@ html[data-theme="light"] .register-link { color: #5a6a7a; }
 html[data-theme="light"] .register-link:hover { color: #1a2332; }
 html[data-theme="light"] .theme-toggle { color: #1a2332; border-color: #c8d0dc; }
 html[data-theme="light"] .theme-toggle:hover { border-color: #5a6a7a; }
-/* ── Tab bar ── */
-.tab-bar {
-  max-width: 960px;
-  margin: 0 auto;
-  display: flex;
-  border-bottom: 2px solid #2a3f5f;
-  margin-bottom: 10px;
-}
-.tab {
-  padding: 10px 20px;
-  color: #7f9aad;
-  text-decoration: none;
-  font-size: 0.85em;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  border-bottom: 2px solid transparent;
-  margin-bottom: -2px;
-  transition: color 0.15s;
-  white-space: nowrap;
-}
-.tab:hover { color: #e8edf2; }
-.tab.active { color: #e8edf2; border-bottom-color: #d4a017; }
-html[data-theme="light"] .tab-bar { border-bottom-color: #c8d0dc; }
-html[data-theme="light"] .tab { color: #5a6a7a; }
-html[data-theme="light"] .tab:hover { color: #1a2332; }
-html[data-theme="light"] .tab.active { color: #1a2332; border-bottom-color: #9a6800; }
 </style>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZX9DZ00N62"></script>
 <script>
@@ -434,17 +436,25 @@ gtag("config", "G-ZX9DZ00N62");
 <body>
 <div class="sticky-top" id="stickyTop">
 <header>
-  <a href="#top"><img src="/ujpi/JPD_logo.PNG" alt="JAPAN POKER DATABASE" class="site-logo"></a>
+  <a href="#top" class="site-title-link">JAPAN POKER DATABASE</a>
   <div class="header-ad">AD</div>
   <a href="/ujpi/about" class="about-link" target="_blank" rel="noopener">JPDとは</a>
 </header>
 <div class="tab-bar">
-  <a href="/ujpi/" class="tab">総合</a>
-  <a href="/ujpi/nlh_ranking.html" class="tab">NLH</a>
-  <a href="/ujpi/plo_ranking.html" class="tab active">PLO</a>
-  <a href="/ujpi/mixed_ranking.html" class="tab">Mixed</a>
+  <a href="index.html" class="tab">総合</a>
+  <a href="nlh_ranking.html" class="tab">NLH</a>
+  <a href="plo_ranking.html" class="tab active">PLO</a>
+  <a href="mixed_ranking.html" class="tab">Mixed</a>
 </div>
 <div class="controls">
+  <select id="tourSelect" class="tour-select" onchange="location.href=this.value">
+      <option value="/ujpi/" selected>総合</option>
+      <option value="/ujpi/tours/jopt_2026_tokyo_01/ranking_public.html">JOPT Tokyo #1</option>
+      <option value="/ujpi/tours/masters_2026/ranking_public.html">MASTERS #2026</option>
+      <option value="/ujpi/tours/sengoku_2026_spring/ranking_public.html">SENGOKU Spring</option>
+      <option value="/ujpi/tours/spadie_40th/ranking_public.html">SPADIE #40</option>
+      <option value="/ujpi/plo_ranking.html">PLO</option>
+    </select>
   <input type="text" class="search-box" id="search" placeholder="Search by player name" oninput="filterByName()">
   <a href="https://buymeacoffee.com/prizechecker" target="_blank" rel="noopener" class="bmc-btn"><span class="bmc-emoji">🤝</span><span class="bmc-text">開発者を<br>支援する</span></a>
 </div>
@@ -455,7 +465,7 @@ gtag("config", "G-ZX9DZ00N62");
   <th class="score">Score<span class="score-help">&#9432;</span><span class="score-tip">GPI準拠方式。log(参加者数/順位) × (1 + log10(バイイン/基準額))で算出。フィールドサイズが大きいほどスコアが高くなる。フィールド上限2700人。</span></th>
   <th class="count">Events</th>
 </tr></thead>
-<tbody><tr class="player-row" data-rank="1" onclick="toggle('r1')"><td class="rank">1st</td><td class="name">モリカツ <a class="x-link" href="https://x.com/mori_katsuhiro" target="_blank" rel="noopener"><svg class="x-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a></td><td class="score">57.4587</td><td class="count">8</td></tr>
+<tbody><tr class="player-row" data-rank="1" onclick="toggle('r1')"><td class="rank rank-1"><span class="medal">🥇</span>1st</td><td class="name">モリカツ <a class="x-link" href="https://x.com/mori_katsuhiro" target="_blank" rel="noopener"><svg class="x-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a></td><td class="score">57.4587</td><td class="count">8</td></tr>
 <tr class="detail-row" data-rank="1" id="r1"><td colspan="4"><div class="ev-container"><div class="ev-card"><a href="https://www.flickr.com/photos/190979093@N07/55017179106/in/album-72177720331144763" target="_blank"><img src="https://live.staticflickr.com/65535/55017179106_9d04b687c1_w.jpg" alt="モリカツ"></a><div class="ev-info"><div class="ev-name">[jopt_2026_tokyo_01] #80 PLO Single Day</div><div class="ev-rank">2位 / 47人 (7.8203pt)</div></div></div>
 <div class="ev-card"><a href="https://www.flickr.com/photos/190979093@N07/55022006514/in/album-72177720331144588" target="_blank"><img src="https://live.staticflickr.com/65535/55022006514_64dc31829f_w.jpg" alt="モリカツ"></a><div class="ev-info"><div class="ev-name">[jopt_2026_tokyo_01] #108 PLO Nightdeep</div><div class="ev-rank">1位 / 63人 (10.263pt)</div></div></div>
 <div class="ev-card"><a href="https://www.flickr.com/photos/190979093@N07/55021854797/in/album-72177720331144508" target="_blank"><img src="https://live.staticflickr.com/65535/55021854797_87532d4798_w.jpg" alt="モリカツ"></a><div class="ev-info"><div class="ev-name">[jopt_2026_tokyo_01] #120 PLO Closer</div><div class="ev-rank">5位 / 59人 (5.6792pt)</div></div></div>
@@ -473,7 +483,7 @@ gtag("config", "G-ZX9DZ00N62");
 https://prize-checker.com/ujpi
 
 #ポーカー戦績ランキング 　#プライズチェッカー" data-flickr="https://www.flickr.com/photos/190979093@N07/55017179106/in/album-72177720331144763" onclick="shareToX(this,event)"><svg class="x-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> ポストする</a></div></td></tr>
-<tr class="player-row" data-rank="2" onclick="toggle('r2')"><td class="rank">2nd</td><td class="name">星合真吾@囲碁ポ</td><td class="score">41.3492</td><td class="count">5</td></tr>
+<tr class="player-row" data-rank="2" onclick="toggle('r2')"><td class="rank rank-2"><span class="medal">🥈</span>2nd</td><td class="name">星合真吾@囲碁ポ</td><td class="score">41.3492</td><td class="count">5</td></tr>
 <tr class="detail-row" data-rank="2" id="r2"><td colspan="4"><div class="ev-container"><div class="ev-card"><div class="ev-info"><div class="ev-name">[jopt_2026_tokyo_01] #96 PLO Highroller</div><div class="ev-rank">4位 / 49人 (7.9578pt)</div></div></div>
 <div class="ev-card"><div class="ev-info"><div class="ev-name">[jopt_2026_tokyo_01] #122 PLO 5card</div><div class="ev-rank">1位 / 77人 (9.4525pt)</div></div></div>
 <div class="ev-card"><div class="ev-info"><div class="ev-name">[masters_2026] #15 100K PLO 6-HANDED HIGH ROLLER</div><div class="ev-rank">2位 / 54人 (9.8875pt)</div></div></div>
@@ -488,7 +498,7 @@ https://prize-checker.com/ujpi
 https://prize-checker.com/ujpi
 
 #ポーカー戦績ランキング 　#プライズチェッカー" data-flickr="https://www.flickr.com/photos/190979093@N07/55019873990/in/album-72177720331144668/" onclick="shareToX(this,event)"><svg class="x-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> ポストする</a></div></td></tr>
-<tr class="player-row" data-rank="3" onclick="toggle('r3')"><td class="rank">3rd</td><td class="name">shopmaker</td><td class="score">31.7836</td><td class="count">4</td></tr>
+<tr class="player-row" data-rank="3" onclick="toggle('r3')"><td class="rank rank-3"><span class="medal">🥉</span>3rd</td><td class="name">shopmaker</td><td class="score">31.7836</td><td class="count">4</td></tr>
 <tr class="detail-row" data-rank="3" id="r3"><td colspan="4"><div class="ev-container"><div class="ev-card"><div class="ev-info"><div class="ev-name">[jopt_2026_tokyo_01] #21 PLO Championship</div><div class="ev-rank">7位 / 75人 (6.4008pt)</div></div></div>
 <div class="ev-card"><div class="ev-info"><div class="ev-name">[jopt_2026_tokyo_01] #108 PLO Nightdeep</div><div class="ev-rank">4位 / 63人 (6.829pt)</div></div></div>
 <div class="ev-card"><div class="ev-info"><div class="ev-name">[jopt_2026_tokyo_01] #120 PLO Closer</div><div class="ev-rank">2位 / 59人 (7.7876pt)</div></div></div>
@@ -502,7 +512,7 @@ https://prize-checker.com/ujpi
 https://prize-checker.com/ujpi
 
 #ポーカー戦績ランキング 　#プライズチェッカー" data-flickr="https://www.flickr.com/photos/190979093@N07/55010128758/in/album-72177720331142393" onclick="shareToX(this,event)"><svg class="x-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> ポストする</a></div></td></tr>
-<tr class="player-row" data-rank="4" onclick="toggle('r4')"><td class="rank">4th</td><td class="name">ヒスイ</td><td class="score">31.2665</td><td class="count">4</td></tr>
+<tr class="player-row" data-rank="4" onclick="toggle('r4')"><td class="rank rank-top10">4th</td><td class="name">ヒスイ</td><td class="score">31.2665</td><td class="count">4</td></tr>
 <tr class="detail-row" data-rank="4" id="r4"><td colspan="4"><div class="ev-container"><div class="ev-card"><div class="ev-info"><div class="ev-name">[jopt_2026_tokyo_01] #21 PLO Championship</div><div class="ev-rank">5位 / 75人 (7.3089pt)</div></div></div>
 <div class="ev-card"><div class="ev-info"><div class="ev-name">[jopt_2026_tokyo_01] #29 PLO Turbo</div><div class="ev-rank">7位 / 57人 (4.3603pt)</div></div></div>
 <div class="ev-card"><div class="ev-info"><div class="ev-name">[jopt_2026_tokyo_01] #55 PLO Hi/Lo 8 or better</div><div class="ev-rank">1位 / 62人 (9.4967pt)</div></div></div>
@@ -516,7 +526,7 @@ https://prize-checker.com/ujpi
 https://prize-checker.com/ujpi
 
 #ポーカー戦績ランキング 　#プライズチェッカー" data-flickr="https://www.flickr.com/photos/190979093@N07/55010218519/in/album-72177720331142393" onclick="shareToX(this,event)"><svg class="x-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> ポストする</a></div></td></tr>
-<tr class="player-row" data-rank="5" onclick="toggle('r5')"><td class="rank">5th</td><td class="name">Euro</td><td class="score">29.2465</td><td class="count">4</td></tr>
+<tr class="player-row" data-rank="5" onclick="toggle('r5')"><td class="rank rank-top10">5th</td><td class="name">Euro</td><td class="score">29.2465</td><td class="count">4</td></tr>
 <tr class="detail-row" data-rank="5" id="r5"><td colspan="4"><div class="ev-container"><div class="ev-card"><div class="ev-info"><div class="ev-name">[jopt_2026_tokyo_01] #21 PLO Championship</div><div class="ev-rank">3位 / 75人 (8.6876pt)</div></div></div>
 <div class="ev-card"><div class="ev-info"><div class="ev-name">[jopt_2026_tokyo_01] #120 PLO Closer</div><div class="ev-rank">1位 / 59人 (9.3825pt)</div></div></div>
 <div class="ev-card"><div class="ev-info"><div class="ev-name">[masters_2026] #19 50K PLO 7-HANDED</div><div class="ev-rank">7位 / 54人 (5.5142pt)</div></div></div>
@@ -530,7 +540,7 @@ https://prize-checker.com/ujpi
 https://prize-checker.com/ujpi
 
 #ポーカー戦績ランキング 　#プライズチェッカー" data-flickr="https://www.flickr.com/photos/190979093@N07/55010218564/in/album-72177720331142393" onclick="shareToX(this,event)"><svg class="x-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> ポストする</a></div></td></tr>
-<tr class="player-row" data-rank="6" onclick="toggle('r6')"><td class="rank">6th</td><td class="name">tak33</td><td class="score">28.8787</td><td class="count">4</td></tr>
+<tr class="player-row" data-rank="6" onclick="toggle('r6')"><td class="rank rank-top10">6th</td><td class="name">tak33</td><td class="score">28.8787</td><td class="count">4</td></tr>
 <tr class="detail-row" data-rank="6" id="r6"><td colspan="4"><div class="ev-container"><div class="ev-card"><div class="ev-info"><div class="ev-name">[jopt_2026_tokyo_01] #108 PLO Nightdeep</div><div class="ev-rank">3位 / 63人 (7.5417pt)</div></div></div>
 <div class="ev-card"><div class="ev-info"><div class="ev-name">[masters_2026] #19 50K PLO 7-HANDED</div><div class="ev-rank">4位 / 54人 (7.0246pt)</div></div></div>
 <div class="ev-card"><div class="ev-info"><div class="ev-name">[sengoku_2026_spring] #20 PLO 5-Card – 信貴山城の戦い</div><div class="ev-rank">4位 / 61人 (5.9289pt)</div></div></div>
@@ -544,7 +554,7 @@ https://prize-checker.com/ujpi
 https://prize-checker.com/ujpi
 
 #ポーカー戦績ランキング 　#プライズチェッカー" data-flickr="https://www.flickr.com/photos/190979093@N07/55021428266/in/album-72177720331144588" onclick="shareToX(this,event)"><svg class="x-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> ポストする</a></div></td></tr>
-<tr class="player-row" data-rank="7" onclick="toggle('r7')"><td class="rank">7th</td><td class="name">シライ</td><td class="score">26.3044</td><td class="count">3</td></tr>
+<tr class="player-row" data-rank="7" onclick="toggle('r7')"><td class="rank rank-top10">7th</td><td class="name">シライ</td><td class="score">26.3044</td><td class="count">3</td></tr>
 <tr class="detail-row" data-rank="7" id="r7"><td colspan="4"><div class="ev-container"><div class="ev-card"><div class="ev-info"><div class="ev-name">[jopt_2026_tokyo_01] #21 PLO Championship</div><div class="ev-rank">1位 / 75人 (11.6528pt)</div></div></div>
 <div class="ev-card"><div class="ev-info"><div class="ev-name">[jopt_2026_tokyo_01] #96 PLO Highroller</div><div class="ev-rank">8位 / 49人 (5.7563pt)</div></div></div>
 <div class="ev-card"><div class="ev-info"><div class="ev-name">[masters_2026] #19 50K PLO 7-HANDED</div><div class="ev-rank">2位 / 54人 (8.8954pt)</div></div></div></div><div class="share-section"><a class="share-x-btn" href="#" data-text="📊JAPAN POKER DATABASE📊
@@ -557,7 +567,7 @@ https://prize-checker.com/ujpi
 https://prize-checker.com/ujpi
 
 #ポーカー戦績ランキング 　#プライズチェッカー" data-flickr="https://www.flickr.com/photos/190979093@N07/55010615729/in/album-72177720331142393" onclick="shareToX(this,event)"><svg class="x-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> ポストする</a></div></td></tr>
-<tr class="player-row" data-rank="8" onclick="toggle('r8')"><td class="rank">8th</td><td class="name">ピョコタン <a class="x-link" href="https://x.com/pyocotan" target="_blank" rel="noopener"><svg class="x-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a></td><td class="score">25.2125</td><td class="count">4</td></tr>
+<tr class="player-row" data-rank="8" onclick="toggle('r8')"><td class="rank rank-top10">8th</td><td class="name">ピョコタン <a class="x-link" href="https://x.com/pyocotan" target="_blank" rel="noopener"><svg class="x-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a></td><td class="score">25.2125</td><td class="count">4</td></tr>
 <tr class="detail-row" data-rank="8" id="r8"><td colspan="4"><div class="ev-container"><div class="ev-card"><a href="https://www.flickr.com/photos/190979093@N07/55010916072/in/album-72177720331127437/" target="_blank"><img src="https://live.staticflickr.com/65535/55010916072_950442b914_w.jpg" alt="ピョコタン"></a><div class="ev-info"><div class="ev-name">[jopt_2026_tokyo_01] #35 PLO Starter</div><div class="ev-rank">2位 / 134人 (8.0019pt)</div></div></div>
 <div class="ev-card"><a href="https://www.flickr.com/photos/201679984@N02/55156885554/in/album-72177720332549676" target="_blank"><img src="https://live.staticflickr.com/65535/55156885554_375297be84_w.jpg" alt="ピョコタン"></a><div class="ev-info"><div class="ev-name">[sengoku_2026_spring] #16 PLO Championship – 金ヶ崎の戦い</div><div class="ev-rank">8位 / 70人 (5.373pt)</div></div></div>
 <div class="ev-card"><a href="https://www.flickr.com/photos/201752439@N08/55088992905/in/album-72177720331796990" target="_blank"><img src="https://live.staticflickr.com/65535/55088992905_f335a601eb_w.jpg" alt="ピョコタン"></a><div class="ev-info"><div class="ev-name">[spadie_40th] #05 PLO Starter</div><div class="ev-rank">9位 / 128人 (4.5104pt)</div></div></div>
@@ -571,7 +581,7 @@ https://prize-checker.com/ujpi
 https://prize-checker.com/ujpi
 
 #ポーカー戦績ランキング 　#プライズチェッカー" data-flickr="https://www.flickr.com/photos/190979093@N07/55010916072/in/album-72177720331127437/" onclick="shareToX(this,event)"><svg class="x-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> ポストする</a></div></td></tr>
-<tr class="player-row" data-rank="9" onclick="toggle('r9')"><td class="rank">9th</td><td class="name">sasasa12345</td><td class="score">24.1077</td><td class="count">4</td></tr>
+<tr class="player-row" data-rank="9" onclick="toggle('r9')"><td class="rank rank-top10">9th</td><td class="name">sasasa12345</td><td class="score">24.1077</td><td class="count">4</td></tr>
 <tr class="detail-row" data-rank="9" id="r9"><td colspan="4"><div class="ev-container"><div class="ev-card"><div class="ev-info"><div class="ev-name">[jopt_2026_tokyo_01] #09 PLO Kick off</div><div class="ev-rank">3位 / 61人 (6.9313pt)</div></div></div>
 <div class="ev-card"><div class="ev-info"><div class="ev-name">[jopt_2026_tokyo_01] #26 PLO Night</div><div class="ev-rank">4位 / 59人 (5.8564pt)</div></div></div>
 <div class="ev-card"><div class="ev-info"><div class="ev-name">[spadie_40th] #05 PLO Starter</div><div class="ev-rank">3位 / 128人 (6.3769pt)</div></div></div>
@@ -585,7 +595,7 @@ https://prize-checker.com/ujpi
 https://prize-checker.com/ujpi
 
 #ポーカー戦績ランキング 　#プライズチェッカー" data-flickr="https://www.flickr.com/photos/190979093@N07/55008144686/in/album-72177720331151859" onclick="shareToX(this,event)"><svg class="x-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> ポストする</a></div></td></tr>
-<tr class="player-row" data-rank="10" onclick="toggle('r10')"><td class="rank">10th</td><td class="name">ぴえろん</td><td class="score">20.8018</td><td class="count">3</td></tr>
+<tr class="player-row" data-rank="10" onclick="toggle('r10')"><td class="rank rank-top10">10th</td><td class="name">ぴえろん</td><td class="score">20.8018</td><td class="count">3</td></tr>
 <tr class="detail-row" data-rank="10" id="r10"><td colspan="4"><div class="ev-container"><div class="ev-card"><div class="ev-info"><div class="ev-name">[jopt_2026_tokyo_01] #26 PLO Night</div><div class="ev-rank">1位 / 59人 (8.8731pt)</div></div></div>
 <div class="ev-card"><div class="ev-info"><div class="ev-name">[jopt_2026_tokyo_01] #55 PLO Hi/Lo 8 or better</div><div class="ev-rank">6位 / 62人 (5.3738pt)</div></div></div>
 <div class="ev-card"><div class="ev-info"><div class="ev-name">[sengoku_2026_spring] #20 PLO 5-Card – 信貴山城の戦い</div><div class="ev-rank">3位 / 61人 (6.555pt)</div></div></div></div><div class="share-section"><a class="share-x-btn" href="#" data-text="📊JAPAN POKER DATABASE📊
@@ -2408,18 +2418,6 @@ function shareToX(el, ev) {
   window.open(intentUrl, '_blank', 'width=550,height=420');
 }
 
-// Xアカウント登録ボタンを全share-sectionに追加（未追加の場合のみ）
-document.querySelectorAll('.share-section').forEach(function(sec) {
-  if (!sec.querySelector('.register-btn')) {
-    const btn = document.createElement('a');
-    btn.href = '/ujpi/register.html';
-    btn.className = 'register-btn';
-    btn.target = '_blank';
-    btn.rel = 'noopener';
-    btn.textContent = 'Xアカウントを登録';
-    sec.insertBefore(btn, sec.firstChild);
-  }
-});
 </script>
 </body>
 </html>
