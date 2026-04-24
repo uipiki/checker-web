@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>kaiji - JAPAN POKER DATABASE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  background: #0f1923;
+  color: #e8edf2;
+  min-height: 100vh;
+}
+.back-bar {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px 24px 16px;
+}
+.back-link {
+  color: #7f9aad;
+  text-decoration: none;
+  font-size: 0.85em;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  letter-spacing: 0.04em;
+  transition: color 0.15s;
+}
+.back-link:hover { color: #e8edf2; }
+.hero {
+  max-width: 1000px;
+  margin: 0 auto 32px;
+  padding: 0 24px;
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+}
+.hero-photo {
+  flex-shrink: 0;
+  width: 200px;
+  height: 200px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #162030;
+  border: 1px solid #2a3f5f;
+}
+.hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.hero-photo a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.hero-photo-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.photo-request-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-size: 0.85em;
+  font-weight: 600;
+  color: #4a9eff;
+  text-decoration: none;
+  text-align: center;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  transition: color 0.15s;
+}
+.photo-request-link:hover { color: #7ab8ff; }
+.hero-info {
+  flex: 1;
+  min-width: 0;
+  padding-top: 4px;
+}
+.hero-position {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+.rank-badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 5px;
+  padding: 3px 12px;
+  font-size: 0.85em;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.rank-badge.gold   { background: #d4a017; color: #1a1000; }
+.rank-badge.silver { background: #9eaab4; color: #0f1923; }
+.rank-badge.bronze { background: #b87333; color: #fff; }
+.rank-badge.other  { background: #2a3f5f; color: #e8edf2; }
+.total-players {
+  font-size: 0.8em;
+  color: #7f9aad;
+  letter-spacing: 0.06em;
+}
+.hero-name {
+  font-size: 2em;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.hero-stats {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.stat-val {
+  font-size: 1.5em;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: #ffffff;
+}
+.stat-label {
+  font-size: 0.7em;
+  color: #7f9aad;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.divider {
+  max-width: 1000px;
+  margin: 0 auto 28px;
+  padding: 0 24px;
+}
+.divider hr {
+  border: none;
+  border-top: 1px solid #2a3f5f;
+}
+.section {
+  max-width: 1000px;
+  margin: 0 auto 40px;
+  padding: 0 24px;
+}
+.section-title {
+  font-size: 0.75em;
+  font-weight: 600;
+  color: #7f9aad;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #2a3f5f;
+  margin-bottom: 16px;
+}
+.tour-group { margin-bottom: 24px; }
+.tour-header {
+  font-size: 0.72em;
+  font-weight: 600;
+  color: #7f9aad;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 6px 0 8px;
+  border-bottom: 1px solid #2a3f5f;
+  margin-bottom: 2px;
+}
+.ev-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 6px;
+  border-bottom: 1px solid #1e2f44;
+  border-radius: 4px;
+  transition: background 0.12s;
+}
+.ev-row:last-child { border-bottom: none; }
+.ev-row:hover { background: #1a2a3a; }
+.ev-photo {
+  flex-shrink: 0;
+  width: 72px;
+  height: 72px;
+  border-radius: 6px;
+  overflow: hidden;
+  display: block;
+}
+.ev-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ev-no-photo { background: #162030; }
+.ev-detail { flex: 1; min-width: 0; }
+.ev-name { font-size: 0.85em; font-weight: 500; color: #e8edf2; line-height: 1.4; margin-bottom: 4px; }
+.ev-meta { font-size: 0.75em; color: #7f9aad; }
+.ev-score { color: #d4a017; font-weight: 600; }
+.x-link {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 26px; height: 26px; border-radius: 50%;
+  background: #2a3a4a; transition: background 0.15s;
+  text-decoration: none; flex-shrink: 0;
+}
+.x-link:hover { background: #4a5a6a; }
+.x-icon { width: 13px; height: 13px; fill: #e8edf2; }
+@media (max-width: 640px) {
+  .back-bar, .section, .divider { padding: 12px 16px; }
+  .hero { padding: 0 16px; flex-direction: column; gap: 20px; }
+  .hero-photo { width: 140px; height: 140px; }
+  .hero-name { font-size: 1.5em; }
+  .hero-stats { gap: 20px; }
+  .stat-val { font-size: 1.2em; }
+  .ev-name { font-size: 0.82em; }
+}
+/* ── Theme toggle button ── */
+.theme-toggle {
+  padding: 6px 14px;
+  background: transparent;
+  color: #e8edf2;
+  border: 1px solid #2a3f5f;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 0.75em;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: border-color 0.15s, color 0.15s;
+}
+.theme-toggle:hover { border-color: #7f9aad; }
+/* ── Light mode overrides ── */
+html[data-theme="light"] body { background: #f4f6f9; color: #1a2332; }
+html[data-theme="light"] .back-link { color: #5a6a7a; }
+html[data-theme="light"] .back-link:hover { color: #1a2332; }
+html[data-theme="light"] .hero-photo { background: #e8ecf2; border-color: #c8d0dc; }
+html[data-theme="light"] .hero-photo-placeholder { color: #c8d0dc; }
+html[data-theme="light"] .total-players { color: #5a6a7a; }
+html[data-theme="light"] .stat-val { color: #1a2332; }
+html[data-theme="light"] .stat-label { color: #5a6a7a; }
+html[data-theme="light"] .divider hr { border-top-color: #c8d0dc; }
+html[data-theme="light"] .section-title { color: #5a6a7a; border-bottom-color: #c8d0dc; }
+html[data-theme="light"] .tour-header { color: #5a6a7a; border-bottom-color: #c8d0dc; }
+html[data-theme="light"] .ev-row { border-bottom-color: #d0d8e4; }
+html[data-theme="light"] .ev-row:hover { background: #edf0f5; }
+html[data-theme="light"] .ev-no-photo { background: #e8ecf2; }
+html[data-theme="light"] .ev-name { color: #1a2332; }
+html[data-theme="light"] .ev-meta { color: #5a6a7a; }
+html[data-theme="light"] .ev-score { color: #9a6800; }
+html[data-theme="light"] .x-link { background: #d8dce4; }
+html[data-theme="light"] .x-link:hover { background: #c8ccd4; }
+html[data-theme="light"] .x-icon { fill: #1a2332; }
+html[data-theme="light"] .theme-toggle { color: #1a2332; border-color: #c8d0dc; }
+html[data-theme="light"] .theme-toggle:hover { border-color: #5a6a7a; }
+</style>
+</head>
+<body>
+<div class="back-bar">
+  <a class="back-link" href="/ujpi/">&#8592; ランキングに戻る</a>
+</div>
+<div class="hero">
+  <div class="hero-photo"><div class="hero-photo-placeholder"><a href="/ujpi/photo.html" class="photo-request-link">Flickr<br>写真の掲載</a></div></div>
+  <div class="hero-info">
+    <div class="hero-position">
+      <span class="rank-badge other">189位</span>
+      <span class="total-players">/ 3792 Players</span>
+    </div>
+    <div class="hero-name">kaiji</div>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-val">25.1514</span>
+        <span class="stat-label">pts</span>
+      </div>
+      <div class="stat">
+        <span class="stat-val">4</span>
+        <span class="stat-label">イベント</span>
+      </div>
+      <div class="stat">
+        <span class="stat-val">2位</span>
+        <span class="stat-label">ベストフィニッシュ</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="divider"><hr></div>
+<div class="section">
+  <div class="section-title">成績（4 イベント）</div>
+<div class="tour-group"><div class="tour-header">[jopt_2026_tokyo_01]</div><div class="ev-row"><div class="ev-photo ev-no-photo"></div><div class="ev-detail"><div class="ev-name">#110 PL Big-O</div><div class="ev-meta">2位 / 79人&emsp;<span class="ev-score">8.4593pt</span></div></div></div><div class="ev-row"><div class="ev-photo ev-no-photo"></div><div class="ev-detail"><div class="ev-name">#122 PLO 5card</div><div class="ev-meta">9位 / 77人&emsp;<span class="ev-score">4.6712pt</span></div></div></div></div>
+<div class="tour-group"><div class="tour-header">[spadie_40th]</div><div class="ev-row"><div class="ev-photo ev-no-photo"></div><div class="ev-detail"><div class="ev-name">#17 PLO Deep</div><div class="ev-meta">5位 / 45人&emsp;<span class="ev-score">5.0559pt</span></div></div></div><div class="ev-row"><div class="ev-photo ev-no-photo"></div><div class="ev-detail"><div class="ev-name">#68 FL 2-7 TD &amp; Badugi</div><div class="ev-meta">4位 / 114人&emsp;<span class="ev-score">6.9651pt</span></div></div></div></div>
+</div>
+</body>
+</html>
