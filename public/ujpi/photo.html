@@ -65,9 +65,6 @@ body {
 .form-label .required {
   color: #d4a017; font-size: 0.85em; margin-left: 6px;
 }
-.form-label .optional {
-  color: #7f9aad; font-size: 0.82em; margin-left: 6px; font-weight: 400;
-}
 .form-input, .form-textarea {
   width: 100%; padding: 14px 16px;
   background: #162030; border: 1px solid #2a3f5f; border-radius: 8px;
@@ -81,6 +78,21 @@ body {
 .form-textarea { min-height: 100px; resize: vertical; }
 .form-hint {
   font-size: 0.78em; color: #7f9aad; margin-top: 6px; line-height: 1.6;
+}
+.form-checkbox-group {
+  display: flex; align-items: center; gap: 12px;
+  padding: 16px 20px;
+  background: #162030; border: 1px solid #2a3f5f; border-radius: 8px;
+}
+.form-checkbox-group input[type="checkbox"] {
+  width: 20px; height: 20px; accent-color: #d4a017;
+  flex-shrink: 0; cursor: pointer;
+}
+.form-checkbox-label {
+  font-size: 0.9em; color: #e8edf2; cursor: pointer; line-height: 1.5;
+}
+.form-checkbox-label small {
+  display: block; font-size: 0.82em; color: #7f9aad; margin-top: 2px;
 }
 .submit-btn {
   display: inline-flex; align-items: center; gap: 8px;
@@ -122,6 +134,9 @@ html[data-theme="light"] .form-textarea {
 html[data-theme="light"] .form-input::placeholder,
 html[data-theme="light"] .form-textarea::placeholder { color: #8a9aaa; }
 html[data-theme="light"] .form-hint { color: #5a6a7a; }
+html[data-theme="light"] .form-checkbox-group { background: #e8ecf2; border-color: #c8d0dc; }
+html[data-theme="light"] .form-checkbox-label { color: #1a2332; }
+html[data-theme="light"] .form-checkbox-label small { color: #5a6a7a; }
 html[data-theme="light"] .result-message.success { background: #e8ecf2; border-color: #c8d0dc; color: #3a4a5a; border-left-color: #d4a017; }
 html[data-theme="light"] .result-message.error { background: #f9e8e8; border-color: #dcc8c8; color: #5a3a3a; border-left-color: #d04040; }
 html[data-theme="light"] .theme-toggle { color: #1a2332; border-color: #c8d0dc; }
@@ -165,7 +180,7 @@ gtag("config", "G-ZX9DZ00N62");
 <div class="page-body">
   <p class="form-description">
     JPDの個人ページに、トーナメント入賞時のFlickr写真を掲載できます。<br>
-    以下のフォームから申請してください。確認後、順次対応いたします。
+    登録は無料です。以下のフォームから申請してください。
   </p>
   <form id="photoForm">
     <div class="form-group">
@@ -175,29 +190,27 @@ gtag("config", "G-ZX9DZ00N62");
       <p class="form-hint">ランキングページで表示されている名前を正確に入力してください。</p>
     </div>
     <div class="form-group">
+      <label class="form-label">写真掲載について</label>
+      <div class="form-checkbox-group">
+        <input type="checkbox" id="photo_permission" name="photo_permission" checked>
+        <label class="form-checkbox-label" for="photo_permission">
+          写真の掲載を許可する
+          <small>許可いただくと、ランキングや個人ページにトーナメント時の写真(flickr)が表示されます。</small>
+        </label>
+      </div>
+    </div>
+    <div class="form-group">
       <label class="form-label" for="current_points">現在のポイント<span class="required">*必須</span></label>
       <input class="form-input" type="text" id="current_points" name="current_points" required
              placeholder="例: 64.0461">
       <p class="form-hint">ランキングページに表示されているポイントを入力してください。本人確認に使用します。</p>
     </div>
     <div class="form-group">
-      <label class="form-label" for="flickr_url">FlickrのURL<span class="optional">任意</span></label>
-      <input class="form-input" type="url" id="flickr_url" name="flickr_url"
-             placeholder="https://www.flickr.com/photos/...">
-      <p class="form-hint">掲載したい写真のFlickr URLを入力してください。URLがない場合は備考欄にご記入ください。</p>
-    </div>
-    <div class="form-group">
-      <label class="form-label" for="x_account">Xアカウント<span class="optional">任意</span></label>
-      <input class="form-input" type="text" id="x_account" name="x_account"
-             placeholder="@username">
-      <p class="form-hint">@を含めて入力してください（例: @poker_taro）</p>
-    </div>
-    <div class="form-group">
-      <label class="form-label" for="notes">備考・要望<span class="optional">任意</span></label>
+      <label class="form-label" for="notes">備考・要望</label>
       <textarea class="form-textarea" id="notes" name="notes"
-                placeholder="写真の説明、掲載希望トーナメント、その他ご要望があればご記入ください"></textarea>
+                placeholder="名前の表記修正やその他ご要望があれば（任意）"></textarea>
     </div>
-    <button class="submit-btn" type="submit">写真掲載を申請する</button>
+    <button class="submit-btn" type="submit">写真を掲載する</button>
   </form>
   <div id="resultMessage" class="result-message"></div>
 </div>
@@ -210,18 +223,11 @@ document.getElementById("photoForm").addEventListener("submit", async function(e
   const msg = document.getElementById("resultMessage");
   msg.style.display = "none";
 
-  // Xアカウントの正規化（入力されていれば@を付加）
-  const xInput = document.getElementById("x_account");
-  let xVal = xInput.value.trim();
-  if (xVal && !xVal.startsWith("@")) xVal = "@" + xVal;
-  xInput.value = xVal;
-
   const data = {
     form_type:      "photo",
     ranking_name:   document.getElementById("ranking_name").value.trim(),
+    photo_permission: document.getElementById("photo_permission").checked,
     current_points: document.getElementById("current_points").value.trim(),
-    flickr_url:     document.getElementById("flickr_url").value.trim(),
-    x_account:      xVal,
     notes:          document.getElementById("notes").value.trim()
   };
 
@@ -244,7 +250,7 @@ document.getElementById("photoForm").addEventListener("submit", async function(e
     msg.textContent = "送信に失敗しました。時間をおいて再度お試しください。";
     msg.style.display = "block";
     btn.disabled = false;
-    btn.textContent = "写真掲載を申請する";
+    btn.textContent = "写真を掲載する";
   }
 });
 </script>
