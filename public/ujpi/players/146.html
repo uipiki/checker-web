@@ -143,6 +143,110 @@ body {
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+}
+.badge {
+  position: relative;
+  width: 46px;
+  height: 46px;
+  padding: 0;
+  border: none;
+  background: none;
+  font: inherit;
+  color: inherit;
+  cursor: help;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.badge:focus-visible svg { outline: 2px solid #4a9eff; outline-offset: 2px; border-radius: 4px; }
+.badge svg {
+  width: 46px;
+  height: 46px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+  transition: transform 0.15s;
+}
+.badge:hover svg, .badge:focus svg { transform: translateY(-2px) scale(1.08); }
+/* ホバー / フォーカスで名前・条件・レアリティを表示 */
+.badge-tip {
+  position: absolute;
+  bottom: calc(100% + 9px);
+  left: 50%;
+  transform: translateX(-50%) translateY(5px);
+  width: max-content;
+  max-width: 230px;
+  padding: 9px 12px;
+  background: #16232f;
+  border: 1px solid #2a3f5f;
+  border-radius: 7px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.55);
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.15s, transform 0.15s;
+  z-index: 20;
+}
+.badge:hover .badge-tip, .badge:focus .badge-tip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+/* 端のバッジはツールチップが画面外に出ないよう寄せる */
+.badge:first-child .badge-tip { left: 0; transform: translateX(0) translateY(5px); }
+.badge:first-child:hover .badge-tip,
+.badge:first-child:focus .badge-tip { transform: translateX(0) translateY(0); }
+.badge:last-child .badge-tip { left: auto; right: 0; transform: translateX(0) translateY(5px); }
+.badge:last-child:hover .badge-tip,
+.badge:last-child:focus .badge-tip { transform: translateX(0) translateY(0); }
+.badge-tip b {
+  display: block;
+  font-size: 0.82em;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: #ffffff;
+}
+.badge-tip em {
+  display: block;
+  margin-top: 3px;
+  font-style: normal;
+  font-size: 0.72em;
+  line-height: 1.45;
+  color: #a8bcc9;
+}
+.badge-tip i {
+  display: block;
+  margin-top: 5px;
+  font-style: normal;
+  font-size: 0.58em;
+  letter-spacing: 0.12em;
+  color: #7f9aad;
+}
+.badge.RARE      .badge-tip i { color: #9eaab4; }
+.badge.EPIC      .badge-tip i { color: #c9a2e8; }
+.badge.LEGENDARY .badge-tip i { color: #d4a017; font-weight: 600; }
+/* 狭い画面ではバッジ単位ではなく列全体に吹き出しを合わせ、はみ出しを防ぐ */
+@media (max-width: 640px) {
+  .badges { position: relative; }
+  .badge { position: static; }
+  .badge .badge-tip,
+  .badge:first-child .badge-tip,
+  .badge:last-child .badge-tip {
+    left: 0;
+    right: 0;
+    width: auto;
+    max-width: none;
+    transform: translateY(5px);
+  }
+  .badge:hover .badge-tip, .badge:focus .badge-tip,
+  .badge:first-child:hover .badge-tip, .badge:first-child:focus .badge-tip,
+  .badge:last-child:hover .badge-tip, .badge:last-child:focus .badge-tip {
+    transform: translateY(0);
+  }
+}
 .divider {
   max-width: 1000px;
   margin: 0 auto 28px;
@@ -287,6 +391,7 @@ html[data-theme="light"] .theme-toggle:hover { border-color: #5a6a7a; }
         <span class="stat-label">ベストフィニッシュ</span>
       </div>
     </div>
+<div class="badges"><button type="button" class="badge EPIC" aria-label="Quad Threat — 4カテゴリ全てで入賞"><svg viewBox="0 0 64 64" aria-hidden="true"><polygon points="32.00,2.00 57.98,17.00 57.98,47.00 32.00,62.00 6.02,47.00 6.02,17.00" fill="none" stroke="var(--badge-gold,#d4a017)" stroke-width="5" opacity=".14"/><polygon points="32.00,2.00 57.98,17.00 57.98,47.00 32.00,62.00 6.02,47.00 6.02,17.00" fill="#12202f" stroke="var(--badge-gold,#d4a017)" stroke-width="2.4" stroke-linejoin="round"/><g transform="translate(32,32) scale(0.78) translate(-32,-32)"><circle cx="32" cy="32" r="16" fill="none" stroke="var(--badge-silver,#9eaab4)" stroke-width="2.8"/><circle cx="32" cy="32" r="10" fill="none" stroke="var(--badge-silver,#9eaab4)" stroke-width="2.2" opacity=".7"/><circle cx="32" cy="32" r="4.2" fill="var(--badge-gold,#d4a017)"/><g transform="translate(32,32) rotate(45)"><path d="M0,-28 L0,-11" stroke="var(--badge-gold,#d4a017)" stroke-width="3.2" stroke-linecap="round"/><path d="M0,-4 L-4.4,-12 L4.4,-12 Z" fill="var(--badge-white,#e8edf2)"/><path d="M-4.6,-32 L0,-25 L4.6,-32" fill="none" stroke="var(--badge-silver,#9eaab4)" stroke-width="2.6" stroke-linejoin="round"/></g><g transform="translate(32,32) rotate(135)"><path d="M0,-28 L0,-11" stroke="var(--badge-gold,#d4a017)" stroke-width="3.2" stroke-linecap="round"/><path d="M0,-4 L-4.4,-12 L4.4,-12 Z" fill="var(--badge-white,#e8edf2)"/><path d="M-4.6,-32 L0,-25 L4.6,-32" fill="none" stroke="var(--badge-silver,#9eaab4)" stroke-width="2.6" stroke-linejoin="round"/></g><g transform="translate(32,32) rotate(225)"><path d="M0,-28 L0,-11" stroke="var(--badge-gold,#d4a017)" stroke-width="3.2" stroke-linecap="round"/><path d="M0,-4 L-4.4,-12 L4.4,-12 Z" fill="var(--badge-white,#e8edf2)"/><path d="M-4.6,-32 L0,-25 L4.6,-32" fill="none" stroke="var(--badge-silver,#9eaab4)" stroke-width="2.6" stroke-linejoin="round"/></g><g transform="translate(32,32) rotate(315)"><path d="M0,-28 L0,-11" stroke="var(--badge-gold,#d4a017)" stroke-width="3.2" stroke-linecap="round"/><path d="M0,-4 L-4.4,-12 L4.4,-12 Z" fill="var(--badge-white,#e8edf2)"/><path d="M-4.6,-32 L0,-25 L4.6,-32" fill="none" stroke="var(--badge-silver,#9eaab4)" stroke-width="2.6" stroke-linejoin="round"/></g></g></svg><span class="badge-tip"><b>Quad Threat</b><em>4カテゴリ全てで入賞</em><i>EPIC</i></span></button></div>
   </div>
 </div>
 <div class="divider"><hr></div>

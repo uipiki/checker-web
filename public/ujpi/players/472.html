@@ -143,6 +143,110 @@ body {
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+}
+.badge {
+  position: relative;
+  width: 46px;
+  height: 46px;
+  padding: 0;
+  border: none;
+  background: none;
+  font: inherit;
+  color: inherit;
+  cursor: help;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.badge:focus-visible svg { outline: 2px solid #4a9eff; outline-offset: 2px; border-radius: 4px; }
+.badge svg {
+  width: 46px;
+  height: 46px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+  transition: transform 0.15s;
+}
+.badge:hover svg, .badge:focus svg { transform: translateY(-2px) scale(1.08); }
+/* ホバー / フォーカスで名前・条件・レアリティを表示 */
+.badge-tip {
+  position: absolute;
+  bottom: calc(100% + 9px);
+  left: 50%;
+  transform: translateX(-50%) translateY(5px);
+  width: max-content;
+  max-width: 230px;
+  padding: 9px 12px;
+  background: #16232f;
+  border: 1px solid #2a3f5f;
+  border-radius: 7px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.55);
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.15s, transform 0.15s;
+  z-index: 20;
+}
+.badge:hover .badge-tip, .badge:focus .badge-tip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+/* 端のバッジはツールチップが画面外に出ないよう寄せる */
+.badge:first-child .badge-tip { left: 0; transform: translateX(0) translateY(5px); }
+.badge:first-child:hover .badge-tip,
+.badge:first-child:focus .badge-tip { transform: translateX(0) translateY(0); }
+.badge:last-child .badge-tip { left: auto; right: 0; transform: translateX(0) translateY(5px); }
+.badge:last-child:hover .badge-tip,
+.badge:last-child:focus .badge-tip { transform: translateX(0) translateY(0); }
+.badge-tip b {
+  display: block;
+  font-size: 0.82em;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: #ffffff;
+}
+.badge-tip em {
+  display: block;
+  margin-top: 3px;
+  font-style: normal;
+  font-size: 0.72em;
+  line-height: 1.45;
+  color: #a8bcc9;
+}
+.badge-tip i {
+  display: block;
+  margin-top: 5px;
+  font-style: normal;
+  font-size: 0.58em;
+  letter-spacing: 0.12em;
+  color: #7f9aad;
+}
+.badge.RARE      .badge-tip i { color: #9eaab4; }
+.badge.EPIC      .badge-tip i { color: #c9a2e8; }
+.badge.LEGENDARY .badge-tip i { color: #d4a017; font-weight: 600; }
+/* 狭い画面ではバッジ単位ではなく列全体に吹き出しを合わせ、はみ出しを防ぐ */
+@media (max-width: 640px) {
+  .badges { position: relative; }
+  .badge { position: static; }
+  .badge .badge-tip,
+  .badge:first-child .badge-tip,
+  .badge:last-child .badge-tip {
+    left: 0;
+    right: 0;
+    width: auto;
+    max-width: none;
+    transform: translateY(5px);
+  }
+  .badge:hover .badge-tip, .badge:focus .badge-tip,
+  .badge:first-child:hover .badge-tip, .badge:first-child:focus .badge-tip,
+  .badge:last-child:hover .badge-tip, .badge:last-child:focus .badge-tip {
+    transform: translateY(0);
+  }
+}
 .divider {
   max-width: 1000px;
   margin: 0 auto 28px;
@@ -287,6 +391,7 @@ html[data-theme="light"] .theme-toggle:hover { border-color: #5a6a7a; }
         <span class="stat-label">ベストフィニッシュ</span>
       </div>
     </div>
+<div class="badges"><button type="button" class="badge EPIC" aria-label="Double Crown — 2カテゴリ以上で1位"><svg viewBox="0 0 64 64" aria-hidden="true"><polygon points="32.00,2.00 57.98,17.00 57.98,47.00 32.00,62.00 6.02,47.00 6.02,17.00" fill="none" stroke="var(--badge-gold,#d4a017)" stroke-width="5" opacity=".14"/><polygon points="32.00,2.00 57.98,17.00 57.98,47.00 32.00,62.00 6.02,47.00 6.02,17.00" fill="#12202f" stroke="var(--badge-gold,#d4a017)" stroke-width="2.4" stroke-linejoin="round"/><g transform="translate(32,32) scale(0.78) translate(-32,-32)"><g transform="translate(29,10) scale(0.95)"><path d="M0,24.0 L0,17.8 L5.0,2.4 L10.0,10.6 L15.0,0.0 L20.0,10.6 L25.0,2.4 L30.0,17.8 L30.0,24.0 Z" fill="var(--badge-silver,#9eaab4)" stroke="var(--badge-silver,#9eaab4)" stroke-width="2" stroke-linejoin="round"/><path d="M0.6,17.8 L29.4,17.8" stroke="#0f1923" stroke-width="2.4" opacity=".5"/></g><g transform="translate(4,26) scale(1.16)"><path d="M0,24.0 L0,17.8 L5.0,2.4 L10.0,10.6 L15.0,0.0 L20.0,10.6 L25.0,2.4 L30.0,17.8 L30.0,24.0 Z" fill="var(--badge-gold,#d4a017)" stroke="#0f1923" stroke-width="1.8" stroke-linejoin="round"/><path d="M0.6,17.8 L29.4,17.8" stroke="#0f1923" stroke-width="2.2" opacity=".55"/><circle cx="15" cy="0" r="2.8" fill="var(--badge-white,#e8edf2)"/></g></g></svg><span class="badge-tip"><b>Double Crown</b><em>2カテゴリ以上で1位</em><i>EPIC</i></span></button><button type="button" class="badge COMMON" aria-label="Pocket 33 — 通算 3 勝"><svg viewBox="0 0 64 64" aria-hidden="true"><polygon points="32.00,2.00 57.98,17.00 57.98,47.00 32.00,62.00 6.02,47.00 6.02,17.00" fill="#12202f" stroke="var(--badge-bronze,#b87333)" stroke-width="2.4" stroke-linejoin="round"/><g transform="translate(32,32) scale(0.78) translate(-32,-32)"><defs><clipPath id="cut-pp-33"><polygon points="32.00,-3.10 62.40,14.45 62.40,49.55 32.00,67.10 1.60,49.55 1.60,14.45"/></clipPath></defs><g clip-path="url(#cut-pp-33)"><rect x="2" y="2" width="40" height="70" rx="4" fill="var(--badge-white,#e8edf2)" stroke="#0f1923" stroke-width="1.8"/><text x="13" y="29" text-anchor="middle" font-size="30" font-weight="bold" font-family="Arial,Helvetica,sans-serif" fill="#0f1923">3</text><g transform="translate(13,44) scale(1.3)"><path d="M0,-5 C-1.2,-2.5 -5,0 -5,2.5 C-5,4.5 -3.2,5.5 -1.8,4.8 C-1.3,4.5 -1,4 -1,4 L-2,6.2 L2,6.2 L1,4 C1,4 1.3,4.5 1.8,4.8 C3.2,5.5 5,4.5 5,2.5 C5,0 1.2,-2.5 0,-5 Z" fill="#0f1923" opacity="1"/></g><rect x="24" y="16" width="40" height="70" rx="4" fill="var(--badge-white,#e8edf2)" stroke="#0f1923" stroke-width="1.8"/><text x="39" y="43" text-anchor="middle" font-size="30" font-weight="bold" font-family="Arial,Helvetica,sans-serif" fill="var(--badge-bronze,#b87333)">3</text><g transform="translate(39,58) scale(1.3)"><path d="M0,6 C-5,1.8 -6,-0.6 -6,-2.4 C-6,-4.6 -4.3,-6 -2.4,-6 C-1.2,-6 -0.36,-5.3 0,-4.6 C0.36,-5.3 1.2,-6 2.4,-6 C4.3,-6 6,-4.6 6,-2.4 C6,-0.6 5,1.8 0,6 Z" fill="var(--badge-bronze,#b87333)" opacity="1"/></g></g></g></svg><span class="badge-tip"><b>Pocket 33</b><em>通算 3 勝</em><i>COMMON</i></span></button><button type="button" class="badge COMMON" aria-label="Hot Streak — 直近3ツアーすべてで入賞（期限付き）"><svg viewBox="0 0 64 64" aria-hidden="true"><polygon points="32.00,2.00 57.98,17.00 57.98,47.00 32.00,62.00 6.02,47.00 6.02,17.00" fill="#12202f" stroke="var(--badge-bronze,#b87333)" stroke-width="2.4" stroke-linejoin="round"/><g transform="translate(32,32) scale(0.78) translate(-32,-32)"><path d="M32,10.0 C39.475,20.35 44.075,27.25 44.075,35.875 C44.075,45.075 37.75,51.4 32,51.4 C26.25,51.4 19.925,45.075 19.925,35.875 C19.925,27.25 24.525,20.35 32,10.0 Z" fill="var(--badge-accent,#4a9eff)"/><path d="M32,23.8 C35.588,31.85 37.382,36.45 37.382,39.9 C37.382,45.65 34.691,49.675 32,49.675 C29.309,49.675 26.618000000000002,45.65 26.618000000000002,39.9 C26.618000000000002,36.45 28.412,31.85 32,23.8 Z" fill="var(--badge-white,#e8edf2)"/></g></svg><span class="badge-tip"><b>Hot Streak</b><em>直近3ツアーすべてで入賞（期限付き）</em><i>COMMON</i></span></button><button type="button" class="badge RARE" aria-label="Win Streak — 連続する2ツアーでそれぞれ優勝"><svg viewBox="0 0 64 64" aria-hidden="true"><polygon points="32.00,2.00 57.98,17.00 57.98,47.00 32.00,62.00 6.02,47.00 6.02,17.00" fill="#12202f" stroke="var(--badge-silver,#9eaab4)" stroke-width="2.4" stroke-linejoin="round"/><g transform="translate(32,32) scale(0.78) translate(-32,-32)"><circle cx="32" cy="32" r="16" fill="none" stroke="var(--badge-silver,#9eaab4)" stroke-width="2.8"/><circle cx="32" cy="32" r="10" fill="none" stroke="var(--badge-silver,#9eaab4)" stroke-width="2.2" opacity=".7"/><circle cx="32" cy="32" r="4.2" fill="var(--badge-accent,#4a9eff)"/><g transform="translate(32,32) rotate(-30)"><path d="M0,-30 L0,-11" stroke="var(--badge-silver,#9eaab4)" stroke-width="3.2" stroke-linecap="round"/><path d="M0,-4 L-4.4,-12 L4.4,-12 Z" fill="var(--badge-white,#e8edf2)"/><path d="M-4.6,-34 L0,-27 L4.6,-34" fill="none" stroke="var(--badge-accent,#4a9eff)" stroke-width="2.6" stroke-linejoin="round"/></g><g transform="translate(32,32) rotate(-30) translate(0,-9) scale(0.62)"><path d="M0,-26 L0,-11" stroke="var(--badge-accent,#4a9eff)" stroke-width="3.2" stroke-linecap="round"/><path d="M0,-4 L-4.4,-12 L4.4,-12 Z" fill="var(--badge-gold,#d4a017)"/><path d="M-4.6,-30 L0,-23 L4.6,-30" fill="none" stroke="var(--badge-white,#e8edf2)" stroke-width="2.6" stroke-linejoin="round"/></g></g></svg><span class="badge-tip"><b>Win Streak</b><em>連続する2ツアーでそれぞれ優勝</em><i>RARE</i></span></button></div>
   </div>
 </div>
 <div class="divider"><hr></div>
